@@ -198,6 +198,9 @@ hr {
         order: 1;
         text-align: center;
     }
+    .colonne_gauche :nth-child(3) {
+        text-align: unset;
+    }
     /* Colonne Droite */
     .colonne_droite {
         padding: 10px;
