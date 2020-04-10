@@ -193,8 +193,89 @@ hr {
         width: 100%;
         flex-direction: column;
     }
+    /* Colonne gauche */
     .colonne_gauche {
         order: 1;
         text-align: center;
+    }
+    /* Colonne Droite */
+    .colonne_droite {
+        padding: 10px;
+    }
+    .colonne_droite header {
+        text-align: center;
+        padding: 0;
+    }
+    .colonne_droite header h1 {
+        margin-bottom: 10px;
+        font-size: 2.5rem;
+    }
+    #sous_titre_header {
+        font-size: 1.3rem;
+    }
+    .conteneur_details {
+        flex-direction: column;
+    }
+    .conteneur_details div:nth-child(2) {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+    .conteneur_details div:nth-child(3) {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+    .année {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height: 2.5rem;
+        background-color: #37474F;
+        color: white;
+        border-radius: 15px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    .outer_circle {
+        display: none;
+    }
+    .colonne_droite section p {
+        font-size: 1.2rem;
+    }
+    .colonne_droite section h1,
+    .colonne_droite footer h1 {
+        text-align: center;
+        font-size: 1.4rem;
+    }
+    .decalage {
+        margin-right: 10px;
+    }
+    .colonne_droite footer p {
+        font-weight: bold;
+        margin: -3px 0 8px 0;
+    }
+    .colonne_droite h2 {
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        margin: 0 0 10px 0;
+    }
+    .recommandations {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .recommandations div {
+        margin: 2rem 0 1rem 0;
+        padding: 20px;
+        border: 2px solid black;
+        border-radius: 30px;
+    }
+    .colonne_droite footer h4 {
+        margin: 0 0 20px 0;
+        text-decoration: underline;
     }
 }
