@@ -114,12 +114,9 @@ hr {
     margin-top: 2.5rem;
 }
 
-.conteneur_details div:nth-child(1) {
-    margin-right: 1.2rem;
-}
-
 .conteneur_details div:nth-child(2) {
     width: 30%;
+    margin-left: 1.2rem;
 }
 
 .conteneur_details div:nth-child(3) {
@@ -137,18 +134,17 @@ hr {
     height: 0.8rem;
     border: 0.2rem solid;
     border-radius: 50%;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    display: -webkit-box;
 }
 
 .dot {
-    position: relative;
-    top: 0.15rem;
-    left: 0.15rem;
-    width: 0.15rem;
-    height: 0.15rem;
-    border: 0.18rem solid;
+    width: 0.1rem;
+    height: 0.1rem;
+    border: 0.2rem solid;
     background-color: #FBC02D;
     border-radius: 50%;
-    margin-right: 3rem;
 }
 
 .colonne_droite section p {
