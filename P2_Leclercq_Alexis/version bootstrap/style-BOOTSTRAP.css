@@ -1,0 +1,97 @@
+/* Globale */
+
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/* Colonne de gauche */
+
+.couleur_fond {
+    color: #FBC02D;
+}
+
+#left-column {
+    background-color: #FBC02D;
+}
+
+#photo_profil {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 30px 0;
+}
+
+.section_gauche h2 {
+    font-weight: bold;
+    background-color: #37474F;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px 0 5px 0;
+}
+
+.section_gauche p {
+    margin: 0 40px 10px 40px;
+}
+
+#img_loisirs {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0 40px 0;
+}
+
+
+/* Colonne de droite */
+
+#right-column {
+    padding: 0 60px 0 60px;
+    /*background-color: darkgrey;*/
+}
+
+#right-column header {
+    padding: 80px 0 0 0;
+}
+
+#right-column header h1 {
+    font-size: 4em;
+}
+
+.gras {
+    font-weight: bold;
+}
+
+#souligne {
+    text-decoration: underline #FBC02D;
+}
+
+hr {
+    border-color: #FBC02D;
+    border-width: 2px;
+}
+
+.année {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.section_droite h1,
+.section_droite h2,
+footer h1,
+footer h4 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#right-column .row {
+    margin-top: 30px;
+}
+
+footer p {
+    font-weight: bold;
+}
+
+.titre {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.9em;
+    margin-bottom: 10px;
+}

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/favicon.png" />
     <script src="https://kit.fontawesome.com/842fb26f39.js" crossorigin="anonymous"></script>
@@ -12,171 +11,134 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
 
-        <!-- Colonne de Droite -->
-        <div class="col-md-push-3 col-md-9 col-xs-12" id="right-column">
+        <div class="colonnes colonne_gauche">
+
+            <!-- PHOTO -->
+            <header id="photo_profil">
+                <img src="images/photo_cv.png" alt="Photo de profil">
+            </header>
+
+            <!-- CONTACT -->
+            <section class="gras">
+                <h2 class="couleur_fond">contact</h2>
+                <p>Adresse<br> Niort, France</p>
+                <p>Téléphone<br> 06 00 00 00 00</p>
+                <p>Email<br> <a href="mailto:nom@email.com">nom@email.com</a></p>
+                <p>Site web<br> <a href="http://www.name.com">www.name.com</a></p>
+                <p>Skype<br> @nom_dutilisateur
+                </p>
+            </section>
+
+            <!-- A PROPOS DE MOI -->
+            <section>
+                <h2 class="couleur_fond">à propos de moi</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis aliquid tenetur libero sint sit natus, est sapiente cum atque, sequi rerum nostrum explicabo ducimus quo aspernatur delectus corporis! Odit, officia.</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis aliquid tenetur libero sint sit natus, est sapiente cum atque, sequi rerum nostrum explicabo ducimus quo aspernatur delectus corporis! Odit, officia.</p>
+            </section>
+
+            <!-- LOISIRS -->
+            <footer>
+                <h2 class="couleur_fond">loisirs</h2>
+                <div id="img_loisirs">
+                    <!-- Utilisation de FontAwesome -->
+                    <i class="fab fa-bitcoin fa-5x"></i>
+                    <i class="fab fa-ethereum fa-5x"></i>
+                    <i class="fas fa-code fa-5x"></i>
+                </div>
+            </footer>
+        </div>
+
+        <div class="colonnes colonne_droite">
+
+            <!-- Colonne de Droite -->
 
             <!-- HEADER NOM PRENOM -->
             <header>
-                <h1> <span class="couleur_fond gras">LECLERCQ</span> ALEXIS</h1>
-                <h2><span id="souligne">Dével</span>oppeur Web freelance</h2>
+                <h1> <span class="couleur_fond gras">alexis</span> leclercq</h1>
+                <div id="sous_titre_header"><span id="souligne">Dével</span>oppeur web freelance</div>
             </header>
 
             <!-- FORMATION -->
-            <section class="section_droite">
+            <section>
 
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h1>formation</h1>
-                        <hr>
-                    </div>
-                </div>
+                <h1><i class="fas fa-graduation-cap couleur_fond decalage"></i>formation</h1>
+                <hr>
 
-                <div class="row">
-                    <div class="col-xs-4 année">
-                        <p>2020<br>Niort</p>
-                    </div>
-                    <div class="col-xs-8">
-                        <div class="titre">openclassrooms</div>
-                        <p>Web Développeur Junior</p>
-                        <p>Elaboration d'un site web en utilisant HTML + CSS + JavaScript. Optimisation de site web existant. Construction d'un site e-commerce. Elaboration d'API sécurisée. Création d'un réseau social d'entreprise.</p>
-                    </div>
+                <div class="année">
+                    <li class="puce_bullet">2020</li>Niort
                 </div>
+                <h2>openclassrooms</h2>
+                <p>Web Développeur Junior</p>
+                <p>Elaboration d'un site web en utilisant HTML + CSS + JavaScript. Optimisation de site web existant. Construction d'un site e-commerce. Elaboration d'API sécurisée. Création d'un réseau social d'entreprise.</p>
 
-                <div class="row">
-                    <div class="col-xs-4 année">
-                        <p>2019 - 2020<br>Ecole Alyra Paris</p>
-                    </div>
-                    <div class="col-xs-8">
-                        <div class="titre">école Blockchain ALYRA</div>
-                        <p>Développeur Blockchain Junior</p>
-                        <p>Certification obtenue en février 2020</p>
-                    </div>
+                <div class="année">
+                    <p>2019 - 2020<br>Ecole Alyra Paris</p>
                 </div>
+                <h2>école Blockchain ALYRA</h2>
+                <p>Développeur Blockchain Junior</p>
+                <p>Certification obtenue en février 2020</p>
 
-                <div class="row">
-                    <div class="col-xs-4 année">
-                        <p>2007 - 2008<br>La Rochelle</p>
-                    </div>
-                    <div class="col-xs-8">
-                        <div class="titre">IUT Informatique de La Rochelle</div>
-                        <p>Développeur</p>
-                        <p>1ère année de DUT</p>
-                    </div>
+                <div class="année">
+                    <p>2007 - 2008<br>La Rochelle</p>
                 </div>
+                <h2>IUT Informatique de La Rochelle</h2>
+                <p>Développeur</p>
+                <p>1ère année de DUT</p>
             </section>
 
             <!-- EXPERIENCE PROFESSIONNELLE -->
-            <section class="section_droite">
+            <section>
 
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h1>expérience professionnelle</h1>
-                        <hr>
-                    </div>
-                </div>
+                <h1><i class="fas fa-briefcase couleur_fond decalage"></i>expérience professionnelle</h1>
+                <hr>
 
-                <div class="row">
-                    <div class="col-xs-4 année">
-                        <p>2018 - 3 mois<br>Intérimaire</p>
-                    </div>
-                    <div class="col-xs-8">
-                        <div class="titre">DPD/SCHENKER</div>
-                        <p>Agent de quai manutentionnaire</p>
-                        <p>Diverses missions d'intérim, entreprise logistique colis</p>
-                    </div>
+                <div class="année">
+                    <p>2018 - 3 mois<br>Intérimaire</p>
                 </div>
+                <h2>DPD/SCHENKER</h2>
+                <p>Agent de quai manutentionnaire</p>
+                <p>Diverses missions d'intérim, entreprise logistique colis</p>
 
-                <div class="row">
-                    <div class="col-xs-4 année">
-                        <p>2015/2017 - 2 ans<br>Coulon</p>
-                    </div>
-                    <div class="col-xs-8">
-                        <div class="titre">Confiserie Leclercq</div>
-                        <p>Chef d'entreprise</p>
-                        <p>Artisan-Commerçant, vente à emporter</p>
-                    </div>
+                <div class="année">
+                    <p>2015/2017 - 2 ans<br>Coulon</p>
                 </div>
+                <h2>Confiserie Leclercq</h2>
+                <p>Chef d'entreprise</p>
+                <p>Artisan-Commerçant, vente à emporter</p>
 
-                <div class="row">
-                    <div class="col-xs-4 année">
-                        <p>2009/2014 - 5 ans<br>Niort/La Rochelle</p>
-                    </div>
-                    <div class="col-xs-8">
-                        <div class="titre">Entreprise familiale</div>
-                        <p>Employé de restauration</p>
-                        <p>Vente, accueil du client, restauration</p>
-                    </div>
+                <div class="année">
+                    <p>2009/2014 - 5 ans<br>Niort/La Rochelle</p>
                 </div>
+                <h2>Entreprise familiale</h2>
+                <p>Employé de restauration</p>
+                <p>Vente, accueil du client, restauration</p>
 
             </section>
 
             <!-- RECOMMANDATIONS -->
             <footer>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h1>recommandations</h1>
-                        <hr>
-                    </div>
-                </div>
+                <h1><i class="fas fa-pencil-alt couleur_fond decalage"></i>recommandations</h1>
+                <hr>
 
-                <div class="row">
-                    <div class="col-xs-6">
-                        <h4>maxime kieman</h4>
-                        <p>Directeur, Mon agence</p>
-                        <p>Téléphone : 06 00 00 00 00</p>
-                        Email: : <a href="mailto:nom@email.com">nom@email.com</a>
-                    </div>
-                    <div class="col-xs-6">
-                        <h4>maxime kieman</h4>
-                        <p>Directeur, Mon agence</p>
-                        <p>Téléphone : 06 00 00 00 00</p>
-                        Email: : <a href="mailto:nom@email.com">nom@email.com</a>
-                    </div>
+                <div>
+                    <h4>maxime kieman</h4>
+                    <p>Directeur, Mon agence</p>
+                    <p>Téléphone : 06 00 00 00 00</p>
+                    Email: : <a href="mailto:nom@email.com">nom@email.com</a>
+                </div>
+                <div>
+                    <h4>maxime kieman</h4>
+                    <p>Directeur, Mon agence</p>
+                    <p>Téléphone : 06 00 00 00 00</p>
+                    Email: : <a href="mailto:nom@email.com">nom@email.com</a>
                 </div>
             </footer>
         </div>
 
-        <!-- Colonne de Gauche -->
-        <div class="col-md-pull-9 col-md-3 col-xs-12" id="left-column">
-            <div class="row">
+    </div>
 
-                <!-- PHOTO -->
-                <header id="photo_profil">
-                    <img src="images/photo_cv.png" alt="Photo de profil">
-                </header>
-
-                <!-- CONTACT -->
-                <section class="section_gauche">
-                    <h2 class="couleur_fond">contact</h2>
-                    <p>Adresse<br> Niort, France</p>
-                    <p>Téléphone<br> 06 00 00 00 00</p>
-                    <p>Email<br> <a href="mailto:nom@email.com">nom@email.com</a></p>
-                    <p>Site web<br> <a href="http://www.name.com">www.name.com</a></p>
-                    <p>Skype<br> @nom_dutilisateur
-                    </p>
-                </section>
-
-                <!-- A PROPOS DE MOI -->
-                <section class="section_gauche">
-                    <h2 class="couleur_fond">à propos de moi</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis aliquid tenetur libero sint sit natus, est sapiente cum atque, sequi rerum nostrum explicabo ducimus quo aspernatur delectus corporis! Odit, officia.</p>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis aliquid tenetur libero sint sit natus, est sapiente cum atque, sequi rerum nostrum explicabo ducimus quo aspernatur delectus corporis! Odit, officia.</p>
-                </section>
-
-                <!-- LOISIRS -->
-                <footer class="section_gauche">
-                    <h2 class="couleur_fond">loisirs</h2>
-                    <div id="img_loisirs">
-                        <!-- Utilisation de FontAwesome -->
-                        <i class="fab fa-bitcoin fa-5x"></i>
-                        <i class="fab fa-ethereum fa-5x"></i>
-                        <i class="fas fa-code fa-5x"></i>
-                    </div>
-                </footer>
-            </div>
-        </div>
     </div>
 </body>
 
