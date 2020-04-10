@@ -184,3 +184,17 @@ hr {
     width: 93%;
     justify-content: space-between;
 }
+
+
+/* Responsive pour smartphone */
+
+@media all and (max-width: 1024px) {
+    .container {
+        width: 100%;
+        flex-direction: column;
+    }
+    .colonne_gauche {
+        order: 1;
+        text-align: center;
+    }
+}
