@@ -46,7 +46,7 @@ body {
     padding: 5px 0 5px 0;
 }
 
-.colonne_gauche :nth-child(3) {
+.a_propos {
     text-align: justify;
     flex-grow: 1;
 }
@@ -56,19 +56,9 @@ body {
 }
 
 #img_loisirs {
+    display: flex;
     margin: 40px 0;
-}
-
-#img_loisirs :nth-child(1) {
-    margin: 0 20px 0 50px;
-}
-
-#img_loisirs :nth-child(2) {
-    margin: 0 10px 0 10px;
-}
-
-#img_loisirs :nth-child(3) {
-    margin: 0 50px 0 20px;
+    justify-content: space-evenly;
 }
 
 
@@ -130,6 +120,7 @@ hr {
 }
 
 .outer_circle {
+    margin-top: 0.2rem;
     width: 0.8rem;
     height: 0.8rem;
     border: 0.2rem solid;
@@ -149,6 +140,7 @@ hr {
 
 .colonne_droite section p {
     font-size: 1.2rem;
+    margin-top: 0;
 }
 
 .colonne_droite footer h4 {
@@ -198,9 +190,6 @@ hr {
         order: 1;
         text-align: center;
     }
-    .colonne_gauche :nth-child(3) {
-        text-align: unset;
-    }
     /* Colonne Droite */
     .colonne_droite {
         padding: 10px;
@@ -247,6 +236,7 @@ hr {
     }
     .colonne_droite section p {
         font-size: 1.2rem;
+        margin-top: 1.2rem;
     }
     .colonne_droite section h1,
     .colonne_droite footer h1 {
