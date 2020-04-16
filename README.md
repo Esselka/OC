@@ -1,7 +1,7 @@
 # Formation Développeur Web
 ### (Avril-Septembre 2020)
 
-<div style="text-align:center"><img src="https://static.oc-static.com/prod/images/paths/illustrations/185/15647531645059_WEB_DEV_JR.png" alt="logo formation dev web" width="20%"/></div>
+<p align="center"><img src="https://static.oc-static.com/prod/images/paths/illustrations/185/15647531645059_WEB_DEV_JR.png" alt="logo formation dev web" width="20%"/></p>
 
 ## _Projets de la formation OpenClassrooms_
 
