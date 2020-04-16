@@ -23,9 +23,9 @@ body {
 }
 
 
-/* Colonne de gauche */
+/* Aside */
 
-.colonne_gauche {
+aside {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -38,8 +38,8 @@ body {
     margin: 50px 0 30px 0;
 }
 
-.colonne_gauche h2 {
-    font-weight: bold;
+aside h2 {
+    font-size: 1.4rem;
     background-color: #37474F;
     text-align: center;
     text-transform: uppercase;
@@ -51,30 +51,38 @@ body {
     flex-grow: 1;
 }
 
-.colonne_gauche p {
+aside p,
+aside ul {
     margin: 0 40px 10px 40px;
+    padding: 0;
+}
+
+aside li {
+    list-style-type: none;
+    margin-bottom: 15px;
 }
 
 #img_loisirs {
+    font-size: 2.5rem;
     display: flex;
     margin: 40px 0;
     justify-content: space-evenly;
 }
 
 
-/* Colonne de droite */
+/* Main */
 
-.colonne_droite {
+main {
     flex: 2;
     padding: 0 60px 0 60px;
     background-color: white;
 }
 
-.colonne_droite header {
+main header {
     padding: 65px 0;
 }
 
-.colonne_droite header h1 {
+main header h1 {
     text-transform: uppercase;
     font-size: 3.5rem;
     margin-bottom: 10px;
@@ -85,7 +93,7 @@ body {
     font-weight: bold;
 }
 
-.gras {
+.contact {
     font-weight: bold;
 }
 
@@ -96,20 +104,21 @@ body {
 hr {
     border-color: #FBC02D;
     border-style: solid;
-    border-width: 2px;
 }
 
 .conteneur_details {
+    list-style-type: none;
+    padding: 0;
     display: flex;
     margin-top: 2.5rem;
 }
 
-.conteneur_details div:nth-child(2) {
+.conteneur_details li:nth-child(2) {
     width: 30%;
     margin-left: 1.2rem;
 }
 
-.conteneur_details div:nth-child(3) {
+.conteneur_details li:nth-child(3) {
     width: 66%;
     margin-left: 2rem;
 }
@@ -119,43 +128,49 @@ hr {
     font-size: 1.1rem;
 }
 
-.colonne_droite section p {
-    font-size: 1.2rem;
+.espaces {
+    display: none;
+}
+
+main section p {
+    font-size: 1rem;
+    line-height: 140%;
     margin-top: 0;
 }
 
-.colonne_droite footer h4 {
+main footer h4 {
     text-transform: uppercase;
     font-weight: bold;
 }
 
-.colonne_droite section h1,
-.colonne_droite footer h1 {
+main section h1,
+main footer h1 {
     text-transform: uppercase;
     font-size: 1.8rem;
-    margin-top: 5rem;
+    margin: 5rem 0 10px 0;
 }
 
 .decalage {
     margin-right: 40px;
 }
 
-.colonne_droite footer p {
+main footer p {
     font-weight: bold;
     margin: -3px 0 8px 0;
 }
 
-.colonne_droite h2 {
+main h2 {
     text-transform: uppercase;
-    font-size: 1.4rem;
-    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    margin: 0 0 8px 0;
 }
 
 .recommandations {
-    margin-bottom: 50px;
+    list-style-type: none;
+    margin-bottom: 40px;
+    padding-left: 0;
     display: flex;
-    width: 93%;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 
@@ -166,20 +181,20 @@ hr {
         width: 100%;
         flex-direction: column;
     }
-    /* Colonne gauche */
-    .colonne_gauche {
+    /* Aside */
+    aside {
         order: 1;
         text-align: center;
     }
-    /* Colonne Droite */
-    .colonne_droite {
+    /* Main */
+    main {
         padding: 10px;
     }
-    .colonne_droite header {
+    main header {
         text-align: center;
         padding: 0;
     }
-    .colonne_droite header h1 {
+    main header h1 {
         margin-bottom: 10px;
         font-size: 2.5rem;
     }
@@ -189,12 +204,12 @@ hr {
     .conteneur_details {
         flex-direction: column;
     }
-    .conteneur_details div:nth-child(2) {
+    .conteneur_details li:nth-child(2) {
         width: 100%;
         margin-left: 0;
         text-align: center;
     }
-    .conteneur_details div:nth-child(3) {
+    .conteneur_details li:nth-child(3) {
         width: 100%;
         margin-left: 0;
         text-align: center;
@@ -202,36 +217,41 @@ hr {
     .année {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         height: 2.5rem;
         background-color: #37474F;
         color: white;
         border-radius: 15px;
-        font-weight: bold;
         font-size: 1.1rem;
         margin-bottom: 1.5rem;
+    }
+    .année br {
+        display: none;
+    }
+    .espaces {
+        display: initial;
     }
     .puces {
         display: none;
     }
-    .colonne_droite section p {
+    main section p {
         font-size: 1.2rem;
         margin-top: 1.2rem;
     }
-    .colonne_droite section h1,
-    .colonne_droite footer h1 {
+    main section h1,
+    main footer h1 {
         text-align: center;
         font-size: 1.4rem;
     }
     .decalage {
         margin-right: 10px;
     }
-    .colonne_droite footer p {
+    main footer p {
         font-weight: bold;
         margin: -3px 0 8px 0;
     }
-    .colonne_droite h2 {
+    main h2 {
         text-transform: uppercase;
         font-size: 1.4rem;
         margin: 0 0 10px 0;
@@ -242,13 +262,13 @@ hr {
         align-items: center;
         width: 100%;
     }
-    .recommandations div {
+    .recommandations li {
         margin: 2rem 0 1rem 0;
         padding: 20px;
         border: 2px solid black;
         border-radius: 30px;
     }
-    .colonne_droite footer h4 {
+    main footer h4 {
         margin: 0 0 20px 0;
         text-decoration: underline;
     }
