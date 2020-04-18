@@ -1,3 +1,7 @@
-# Lien vers le site web GitHub Pages :
+<h1>Lien vers le site web GitHub Pages :</h1>
 
-[GitHub Pages du CV](https://esselka.github.io/P2_CV/)
+<link rel="stylesheet" href="../Divers/bouton.css">
+
+<div class="wrap">
+    <a href="https://esselka.github.io/P2_CV/" class="button"><span>Accéder au livrable</span></a>
+</div>
