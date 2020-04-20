@@ -1,0 +1,11 @@
+{
+    "name": "p3_leclercq_alexis",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "sass": "sass --watch ./sass/main.scss:style.css"
+    },
+    "author": "",
+    "license": "ISC"
+}
