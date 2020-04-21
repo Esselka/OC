@@ -1,0 +1,17 @@
+.menu_page {
+    width: 66vw;
+    box-shadow: 0px 0px 15px lightgrey;
+    margin-bottom: 40px;
+}
+
+.page_restaurant {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    & h2 {
+        margin: 40px 0 20px 0;
+        text-align: center;
+        color: #000;
+        font-size: 3.5vw;
+    }
+}
