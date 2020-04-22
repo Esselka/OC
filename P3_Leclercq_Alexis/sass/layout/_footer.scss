@@ -2,14 +2,14 @@
     0% {
         transform: rotate(0deg);
     }
-    3% {
-        transform: rotate(-2deg);
+    25% {
+        transform: rotate(-5deg);
     }
-    4% {
-        transform: rotate(2deg);
+    50% {
+        transform: rotate(5deg);
     }
-    5% {
-        transform: rotate(0deg);
+    75% {
+        transform: rotate(-5deg);
     }
     100% {
         transform: rotate(0deg);
@@ -31,6 +31,8 @@ footer {
         text-decoration: none;
         padding: 0 30px;
         color: $secondary-color;
-        animation: wiggle 3s infinite;
+        &:hover {
+            animation: wiggle 1200ms infinite ease-in-out both;
+        }
     }
 }
