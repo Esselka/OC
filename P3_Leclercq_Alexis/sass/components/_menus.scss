@@ -3,29 +3,46 @@
     flex-wrap: wrap;
     justify-content: center;
     &__menu1 {
-        width: 30vw;
-        height: 60vh;
-        box-shadow: 0px 0px 15px lightgrey;
-        margin: 30px;
-        overflow: hidden;
+        @include menu;
         &--bg-color {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            transition: all 300ms ease;
             background-color: $menu1-bg-color;
-            &:hover {
-                transform: scale(1.3);
-                opacity: 0.3;
-            }
+            @include menu-display;
         }
         & img {
             width: 20%;
         }
         & p {
-            margin: 0;
+            margin: 0 0 30px 0;
+        }
+    }
+    &__menu2 {
+        @include menu;
+        &--bg-color {
+            background-color: $menu2-bg-color;
+            @include menu-display;
+        }
+        & p {
+            margin: 30px 0 0 0;
+        }
+    }
+    &__menu3 {
+        @include menu;
+        &--bg-color {
+            background-color: $menu3-bg-color;
+            @include menu-display;
+        }
+        & p {
+            margin: 30px 0 0 0;
+        }
+    }
+    &__menu4 {
+        @include menu;
+        &--bg-color {
+            background-color: $menu4-bg-color;
+            @include menu-display;
+        }
+        & p {
+            margin: 30px 0 0 0;
         }
     }
     & li {
@@ -34,7 +51,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: $menu1-color;
             text-decoration: none;
         }
     }
