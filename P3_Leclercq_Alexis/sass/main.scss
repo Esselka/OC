@@ -4,7 +4,7 @@
 // BASE
 @import "./base/typography";
 // COMPONENTS
-@import "./components/menus-group";
+@import "./components/menus";
 @import "./components/prochainement";
 //LAYOUT
 @import "./layout/container";
@@ -14,3 +14,4 @@
 //PAGES
 @import "./pages/menus-pages";
 @import "./pages/mentions-legales";
+@import "./pages/index";

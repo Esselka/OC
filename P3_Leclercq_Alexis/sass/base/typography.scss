@@ -3,3 +3,18 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: $secondary-color;
 }
+
+@font-face {
+    font-family: 'SegoePrintBold';
+    src: url('../../fonts/segoeprb.ttf');
+}
+
+.font-menu1-titre {
+    font-family: 'Ma Shan Zheng', cursive, serif;
+    font-size: 3rem;
+}
+
+.font-menu1-menu {
+    font-family: SegoePrintBold, serif;
+    font-size: 3rem;
+}

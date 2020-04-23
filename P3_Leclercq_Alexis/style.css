@@ -4,24 +4,60 @@ body {
   color: #FDCB46;
 }
 
-.menus-group {
+@font-face {
+  font-family: "SegoePrintBold";
+  src: url("../../fonts/segoeprb.ttf");
+}
+.font-menu1-titre {
+  font-family: "Ma Shan Zheng", cursive, serif;
+  font-size: 3rem;
+}
+
+.font-menu1-menu {
+  font-family: SegoePrintBold, serif;
+  font-size: 3rem;
+}
+
+.menus {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.menus-group__prev {
+.menus__menu1 {
   width: 30vw;
-  transition: all 300ms ease;
-}
-.menus-group__prev:hover {
-  transform: scale(1.3);
-  opacity: 0.3;
-  /*filter: brightness(85%);*/
-}
-.menus-group__prev--zoom {
-  overflow: hidden;
+  height: 60vh;
   box-shadow: 0px 0px 15px lightgrey;
   margin: 30px;
+  overflow: hidden;
+}
+.menus__menu1--bg-color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: all 300ms ease;
+  background-color: #FCDFDB;
+}
+.menus__menu1--bg-color:hover {
+  transform: scale(1.3);
+  opacity: 0.3;
+}
+.menus__menu1 img {
+  width: 20%;
+}
+.menus__menu1 p {
+  margin: 0;
+}
+.menus li {
+  list-style-type: none;
+}
+.menus li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #3D1319;
+  text-decoration: none;
 }
 
 @keyframes clignotement {
