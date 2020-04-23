@@ -1,11 +1,16 @@
+// UTILS
 @import "./utils/variables";
 @import "./utils/mixins";
+// BASE
 @import "./base/typography";
+// COMPONENTS
 @import "./components/menus-group";
 @import "./components/prochainement";
+//LAYOUT
 @import "./layout/container";
 @import "./layout/header";
 @import "./layout/footer";
 @import "./layout/main";
+//PAGES
 @import "./pages/menus-pages";
 @import "./pages/mentions-legales";

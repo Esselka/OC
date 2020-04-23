@@ -11,14 +11,14 @@
 }
 
 .prochainement {
-    font-size: 3.5vw;
+    font-size: 2rem;
     background-color: $primary-color;
     border-radius: 10px;
     padding: 10px 35px;
     margin-top: 30px;
     & span {
         line-height: 0;
-        animation: clignotement 2s infinite both;
+        animation: clignotement 2s infinite;
     }
     & span:nth-child(2) {
         animation-delay: 200ms;

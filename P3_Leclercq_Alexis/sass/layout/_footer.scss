@@ -22,12 +22,12 @@ footer {
     align-items: center;
     position: sticky;
     bottom: 0;
-    height: 10vh;
+    height: 7vh;
     background-color: $primary-color;
     margin-top: 60px;
     & a {
         text-align: center;
-        font-size: 2vw;
+        font-size: 1rem;
         text-decoration: none;
         padding: 0 30px;
         color: $secondary-color;
