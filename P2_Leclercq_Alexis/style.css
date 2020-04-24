@@ -38,6 +38,11 @@ aside {
     margin: 50px 0 30px 0;
 }
 
+header img {
+    border-radius: 50%;
+    border: 5px solid #DAAF12;
+}
+
 aside h2 {
     font-size: 1.4rem;
     background-color: #37474F;
@@ -127,10 +132,6 @@ hr {
     font-size: 1.1rem;
 }
 
-.espaces {
-    display: none;
-}
-
 main section p {
     font-size: 1rem;
     line-height: 140%;
@@ -174,7 +175,7 @@ main h2 {
 }
 
 
-/* Responsive pour smartphone */
+/* Responsive pour tablettes */
 
 @media all and (max-width: 1024px) {
     .container {
@@ -187,9 +188,6 @@ main h2 {
         text-align: center;
     }
     /* Main */
-    main {
-        padding: 10px;
-    }
     main header {
         text-align: center;
         padding: 0;
@@ -201,39 +199,16 @@ main h2 {
     #sous_titre_header {
         font-size: 1.3rem;
     }
-    .conteneur_details {
-        flex-direction: column;
-    }
     .conteneur_details li:nth-child(2) {
-        width: 100%;
-        margin-left: 0;
-        text-align: center;
-    }
-    .conteneur_details li:nth-child(3) {
-        width: 100%;
-        margin-left: 0;
-        text-align: center;
+        margin-left: 50px;
     }
     .année {
         display: flex;
         flex-direction: row;
-        justify-content: center;
         align-items: center;
         height: 2.5rem;
-        background-color: #37474F;
-        color: white;
-        border-radius: 15px;
         font-size: 1.1rem;
         margin-bottom: 1.5rem;
-    }
-    .année br {
-        display: none;
-    }
-    .espaces {
-        display: initial;
-    }
-    .puces {
-        display: none;
     }
     main section p {
         font-size: 1.2rem;
@@ -259,13 +234,48 @@ main h2 {
         width: 100%;
     }
     .recommandations li {
-        margin: 2rem 0 1rem 0;
+        margin-top: 2rem;
         padding: 20px;
-        border: 2px solid black;
-        border-radius: 30px;
     }
     main footer h4 {
         margin: 0 0 20px 0;
         text-decoration: underline;
+    }
+}
+
+
+/* Reponsive pour smartphones */
+
+@media only screen and (max-width: 767px) {
+    /* Main */
+    main {
+        padding: 10px;
+    }
+    main header h1 {
+        font-size: 2.2rem;
+    }
+    #sous_titre_header {
+        font-size: 1.1rem;
+    }
+    .conteneur_details li:nth-child(2) {
+        margin-left: 15px;
+        width: 27%;
+    }
+    .année {
+        align-items: flex-start;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    main section p {
+        font-size: 0.8rem;
+        margin-top: 0;
+    }
+    main section h1,
+    main footer h1 {
+        font-size: 1.2rem;
+    }
+    main h2 {
+        font-size: 1rem;
+        margin: 0 0 10px 0;
     }
 }
