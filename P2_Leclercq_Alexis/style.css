@@ -248,6 +248,12 @@ main h2 {
 
 @media only screen and (max-width: 767px) {
     /* Main */
+    .far {
+        font-size: .7rem;
+    }
+    .fa-circle:before {
+        font-size: .5rem;
+    }
     main {
         padding: 10px;
     }
