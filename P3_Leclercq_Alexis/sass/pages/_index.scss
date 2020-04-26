@@ -12,7 +12,7 @@
 
 .font-menu2-titre {
     font-family: 'Croissant One', cursive, serif;
-    font-size: 2.3rem;
+    font-size: 2.1rem;
     background: linear-gradient(to bottom right, #E38A12, #9461FE);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -40,9 +40,7 @@
 .font-menu4-titre {
     font-family: 'Kaushan Script', cursive, serif;
     font-size: 3rem;
-    background: linear-gradient(to right, #43973D, #BEFF7F);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @include menu4-gradient;
 }
 
 .font-menu4-menu {

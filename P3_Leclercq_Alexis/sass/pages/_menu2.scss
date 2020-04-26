@@ -1,4 +1,5 @@
 .page-menu2 {
+    @include pages-menus-layout;
     color: #000;
     & section {
         @include page-section;
@@ -30,6 +31,7 @@
     }
     & li {
         @include plats;
+        font-size: 1.2rem;
     }
     &--couleur-entree {
         color: $menu2-titre-color-entree;
@@ -39,6 +41,5 @@
     }
     &--couleur-dessert {
         color: $menu2-titre-color-dessert;
-        margin-bottom: 10rem;
     }
 }

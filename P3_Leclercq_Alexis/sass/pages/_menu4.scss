@@ -1,0 +1,39 @@
+.page-menu4 {
+    @include pages-menus-layout;
+    color: #000;
+    & section {
+        @include page-section;
+        background-color: $menu4-bg-color;
+        font-family: 'SegoePrintBold', serif;
+    }
+    & h2 {
+        font-size: 3rem;
+    }
+    & h3 {
+        @include menu4-gradient;
+        font-size: 5rem;
+        font-weight: normal;
+        font-family: 'Kaushan Script', cursive, serif;
+        margin-top: 100px;
+    }
+    &__titres {
+        @include menus-titre;
+        & h4 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        & img {
+            width: 36%;
+        }
+    }
+    & ul {
+        @include titres-plats;
+    }
+    & li {
+        @include plats;
+        font-size: 1rem;
+    }
+    & em {
+        font-size: 1.2rem;
+    }
+}

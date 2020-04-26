@@ -1,19 +1,19 @@
 .page-menu3 {
+    @include pages-menus-layout;
     color: #000;
     & section {
         @include page-section;
         background-color: $menu3-bg-color;
-        font-family: 'Roboto Slab', serif;
+        font-family: 'SegoePrintBold', serif;
     }
     & h2 {
         font-size: 3rem;
     }
     & h3 {
         @include menu3-gradient;
-        font-size: 2.5rem;
+        font-size: 5rem;
         font-weight: normal;
-        font-family: 'SegoePrintBold', serif;
-        /* */
+        font-family: 'Dancing Script', cursive, serif;
         margin-top: 100px;
     }
     &__titres {
@@ -31,5 +31,6 @@
     }
     & li {
         @include plats;
+        font-size: 1.1rem;
     }
 }

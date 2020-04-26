@@ -1,4 +1,5 @@
 .page-menu1 {
+    @include pages-menus-layout;
     color: #000;
     & section {
         @include page-section;

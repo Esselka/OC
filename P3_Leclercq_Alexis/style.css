@@ -34,7 +34,7 @@ body {
   opacity: 0.3;
 }
 .menus__menu1 img {
-  width: 20%;
+  width: 30%;
 }
 .menus__menu1 p {
   margin: 0 0 30px 0;
@@ -70,7 +70,7 @@ body {
   overflow: hidden;
 }
 .menus__menu3--bg-color {
-  background-color: #F9F9F9;
+  background-color: #EDEFEF;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -249,7 +249,7 @@ main {
 
 .font-menu2-titre {
   font-family: "Croissant One", cursive, serif;
-  font-size: 2.3rem;
+  font-size: 2.1rem;
   background: linear-gradient(to bottom right, #E38A12, #9461FE);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -291,13 +291,16 @@ main {
 }
 
 .page-menu1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #000;
 }
 .page-menu1 section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 3%;
+  padding: 0 3% 10rem 3%;
   max-width: 1200px;
   width: 60%;
   box-shadow: 0px 0px 15px lightgrey;
@@ -344,7 +347,6 @@ main {
 .page-menu1 li {
   width: 80%;
   margin: auto;
-  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
   line-height: 280%;
@@ -365,13 +367,16 @@ main {
 }
 
 .page-menu2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #000;
 }
 .page-menu2 section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 3%;
+  padding: 0 3% 10rem 3%;
   max-width: 1200px;
   width: 60%;
   box-shadow: 0px 0px 15px lightgrey;
@@ -413,10 +418,10 @@ main {
 .page-menu2 li {
   width: 80%;
   margin: auto;
-  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
   line-height: 280%;
+  font-size: 1.2rem;
 }
 .page-menu2--couleur-entree {
   color: #C67412;
@@ -426,22 +431,24 @@ main {
 }
 .page-menu2--couleur-dessert {
   color: #6E4CCC;
-  margin-bottom: 10rem;
 }
 
 .page-menu3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #000;
 }
 .page-menu3 section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 3%;
+  padding: 0 3% 10rem 3%;
   max-width: 1200px;
   width: 60%;
   box-shadow: 0px 0px 15px lightgrey;
-  background-color: #F9F9F9;
-  font-family: "Roboto Slab", serif;
+  background-color: #EDEFEF;
+  font-family: "SegoePrintBold", serif;
 }
 .page-menu3 h2 {
   font-size: 3rem;
@@ -450,10 +457,9 @@ main {
   background: linear-gradient(to right, #0230DF, #0889FB);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 2.5rem;
+  font-size: 5rem;
   font-weight: normal;
-  font-family: "SegoePrintBold", serif;
-  /* */
+  font-family: "Dancing Script", cursive, serif;
   margin-top: 100px;
 }
 .page-menu3__titres {
@@ -479,10 +485,71 @@ main {
 .page-menu3 li {
   width: 80%;
   margin: auto;
-  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
   line-height: 280%;
+  font-size: 1.1rem;
+}
+
+.page-menu4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+}
+.page-menu4 section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 3% 10rem 3%;
+  max-width: 1200px;
+  width: 60%;
+  box-shadow: 0px 0px 15px lightgrey;
+  background-color: #FDFFFD;
+  font-family: "SegoePrintBold", serif;
+}
+.page-menu4 h2 {
+  font-size: 3rem;
+}
+.page-menu4 h3 {
+  background: linear-gradient(to right, #43973D, #BEFF7F);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 5rem;
+  font-weight: normal;
+  font-family: "Kaushan Script", cursive, serif;
+  margin-top: 100px;
+}
+.page-menu4__titres {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 60px;
+}
+.page-menu4__titres h4 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+.page-menu4__titres img {
+  width: 36%;
+}
+.page-menu4 ul {
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+}
+.page-menu4 li {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  line-height: 280%;
+  font-size: 1rem;
+}
+.page-menu4 em {
+  font-size: 1.2rem;
 }
 
 /*# sourceMappingURL=style.css.map */
