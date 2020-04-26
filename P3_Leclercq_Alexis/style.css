@@ -301,7 +301,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
   padding: 0 8%;
   max-width: 1200px;
   width: 60%;
@@ -324,16 +323,19 @@ main {
 }
 .page-menu1__titres {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  padding: 0 8%;
+  width: 100%;
+  margin-top: 60px;
 }
 .page-menu1__titres h4 {
   font-weight: bold;
   font-size: 1.6rem;
+  margin: 0;
 }
 .page-menu1__titres img {
-  height: auto;
-  width: auto;
+  width: 33%;
 }
 .page-menu1 ul {
   width: 100%;
@@ -342,12 +344,13 @@ main {
 }
 .page-menu1 li {
   width: 100%;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
+  line-height: 280%;
 }
 .page-menu1 em {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 .page-menu1__bottom-menu {
