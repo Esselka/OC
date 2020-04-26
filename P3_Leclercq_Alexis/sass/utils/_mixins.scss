@@ -18,3 +18,11 @@
         opacity: 0.3;
     }
 }
+
+@mixin menu-barre {
+    content: '';
+    width: 10rem;
+    border-bottom: 7px $menu1-color solid;
+    display: inline-block;
+    vertical-align: middle;
+}
