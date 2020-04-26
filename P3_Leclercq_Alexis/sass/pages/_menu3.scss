@@ -1,0 +1,35 @@
+.page-menu3 {
+    color: #000;
+    & section {
+        @include page-section;
+        background-color: $menu3-bg-color;
+        font-family: 'Roboto Slab', serif;
+    }
+    & h2 {
+        font-size: 3rem;
+    }
+    & h3 {
+        @include menu3-gradient;
+        font-size: 2.5rem;
+        font-weight: normal;
+        font-family: 'SegoePrintBold', serif;
+        /* */
+        margin-top: 100px;
+    }
+    &__titres {
+        @include menus-titre;
+        & h4 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        & img {
+            width: 30%;
+        }
+    }
+    & ul {
+        @include titres-plats;
+    }
+    & li {
+        @include plats;
+    }
+}

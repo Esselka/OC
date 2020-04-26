@@ -291,26 +291,25 @@ main {
 }
 
 .page-menu1 {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
   color: #000;
 }
 .page-menu1 section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 8%;
+  padding: 0 3%;
   max-width: 1200px;
   width: 60%;
-  background-color: #FCDFDB;
   box-shadow: 0px 0px 15px lightgrey;
+  padding: 0 8%;
+  background-color: #FCDFDB;
   color: #3D1319;
   font-family: "SegoePrintBold", serif;
 }
 .page-menu1__top-note {
   padding-top: 60px;
+  width: 6rem;
+  height: 5.5rem;
 }
 .page-menu1 h2 {
   font-size: 3rem;
@@ -343,11 +342,13 @@ main {
   list-style-type: none;
 }
 .page-menu1 li {
-  width: 100%;
+  width: 80%;
+  margin: auto;
   font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
   line-height: 280%;
+  width: 100%;
 }
 .page-menu1 em {
   font-size: 1.5rem;
@@ -355,11 +356,133 @@ main {
 }
 .page-menu1__bottom-menu {
   display: flex;
+  align-items: center;
   margin: 4rem;
 }
 .page-menu1__bottom-menu img {
   width: 3rem;
   height: 3rem;
+}
+
+.page-menu2 {
+  color: #000;
+}
+.page-menu2 section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 3%;
+  max-width: 1200px;
+  width: 60%;
+  box-shadow: 0px 0px 15px lightgrey;
+  background-color: #FFF5FE;
+  font-family: "Roboto Slab", serif;
+}
+.page-menu2 h2 {
+  font-size: 3rem;
+}
+.page-menu2 h3 {
+  background: linear-gradient(to bottom right, #E38A12, #9461FE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
+  font-weight: normal;
+  font-family: "Croissant One", cursive, serif;
+  margin-top: 100px;
+}
+.page-menu2__titres {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 60px;
+}
+.page-menu2__titres h4 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.page-menu2__titres img {
+  width: 30%;
+}
+.page-menu2 ul {
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+}
+.page-menu2 li {
+  width: 80%;
+  margin: auto;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  line-height: 280%;
+}
+.page-menu2--couleur-entree {
+  color: #C67412;
+}
+.page-menu2--couleur-plat {
+  color: #A56799;
+}
+.page-menu2--couleur-dessert {
+  color: #6E4CCC;
+  margin-bottom: 10rem;
+}
+
+.page-menu3 {
+  color: #000;
+}
+.page-menu3 section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 3%;
+  max-width: 1200px;
+  width: 60%;
+  box-shadow: 0px 0px 15px lightgrey;
+  background-color: #F9F9F9;
+  font-family: "Roboto Slab", serif;
+}
+.page-menu3 h2 {
+  font-size: 3rem;
+}
+.page-menu3 h3 {
+  background: linear-gradient(to right, #0230DF, #0889FB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
+  font-weight: normal;
+  font-family: "SegoePrintBold", serif;
+  /* */
+  margin-top: 100px;
+}
+.page-menu3__titres {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 60px;
+}
+.page-menu3__titres h4 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.page-menu3__titres img {
+  width: 30%;
+}
+.page-menu3 ul {
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+}
+.page-menu3 li {
+  width: 80%;
+  margin: auto;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  line-height: 280%;
 }
 
 /*# sourceMappingURL=style.css.map */

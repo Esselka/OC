@@ -28,9 +28,7 @@
 .font-menu3-titre {
     font-family: 'Dancing Script', cursive, serif;
     font-size: 3rem;
-    background: linear-gradient(to right, #0230DF, #0889FB);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @include menu3-gradient;
 }
 
 .font-menu3-menu {
