@@ -5,9 +5,21 @@
         @include page-section;
         background-color: $menu2-bg-color;
         font-family: 'Roboto Slab', serif;
+        @include tablet-only {
+            width: 65%;
+        }
+        @include mobile-only {
+            width: 85%;
+        }
     }
     & h2 {
         font-size: 3rem;
+        @include tablet-only {
+            font-size: 2rem;
+        }
+        @include mobile-only {
+            font-size: 1.1rem;
+        }
     }
     & h3 {
         @include menu2-gradient;
@@ -15,15 +27,35 @@
         font-weight: normal;
         font-family: 'Croissant One', cursive, serif;
         margin-top: 100px;
+        @include tablet-only {
+            margin-top: 60px;
+            font-size: 1.8rem;
+        }
+        @include mobile-only {
+            margin-top: 60px;
+            font-size: 1.3rem;
+        }
     }
     &__titres {
         @include menus-titre;
         & h4 {
             font-size: 1.5rem;
             margin: 0;
+            @include tablet-only {
+                font-size: 1.1rem;
+            }
+            @include mobile-only {
+                font-size: 0.8rem;
+            }
         }
         & img {
             width: 30%;
+            @include tablet-only {
+                width: 27%;
+            }
+            @include mobile-only {
+                width: 24%;
+            }
         }
     }
     & ul {
@@ -32,6 +64,12 @@
     & li {
         @include plats;
         font-size: 1.2rem;
+        @include tablet-only {
+            font-size: 0.76rem;
+        }
+        @include mobile-only {
+            font-size: 0.48rem;
+        }
     }
     &--couleur-entree {
         color: $menu2-titre-color-entree;

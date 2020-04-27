@@ -27,12 +27,16 @@ footer {
     margin-top: 60px;
     & a {
         text-align: center;
-        font-size: 1rem;
+        font-size: 1.2rem;
         text-decoration: none;
         padding: 0 30px;
         color: $secondary-color;
         &:hover {
             animation: wiggle 1200ms infinite ease-in-out both;
+        }
+        @include mobile-only {
+            font-size: 0.8rem;
+            padding: 0 15px;
         }
     }
 }

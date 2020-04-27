@@ -2,6 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0;
+    padding: 0;
     &__menu1 {
         @include menu;
         &--bg-color {
@@ -12,7 +14,7 @@
             width: 30%;
         }
         & p {
-            margin: 0 0 30px 0;
+            margin: 0 0 15px 0;
         }
     }
     &__menu2 {
@@ -22,7 +24,7 @@
             @include menu-display;
         }
         & p {
-            margin: 30px 0 0 0;
+            margin: 15px 0 0 0;
         }
     }
     &__menu3 {
@@ -32,7 +34,7 @@
             @include menu-display;
         }
         & p {
-            margin: 30px 0 0 0;
+            margin: 15px 0 0 0;
         }
     }
     &__menu4 {
@@ -42,7 +44,7 @@
             @include menu-display;
         }
         & p {
-            margin: 30px 0 0 0;
+            margin: 15px 0 0 0;
         }
     }
     & li {

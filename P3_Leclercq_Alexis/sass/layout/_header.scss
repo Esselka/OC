@@ -7,6 +7,9 @@ header {
         text-align: center;
         font-size: 3rem;
         margin: 20px 0;
+        @include mobile-only {
+            font-size: 1.8rem;
+        }
     }
     & a {
         text-decoration: none;

@@ -5,9 +5,21 @@
         @include page-section;
         background-color: $menu4-bg-color;
         font-family: 'SegoePrintBold', serif;
+        @include tablet-only {
+            width: 65%;
+        }
+        @include mobile-only {
+            width: 85%;
+        }
     }
     & h2 {
         font-size: 3rem;
+        @include tablet-only {
+            font-size: 2rem;
+        }
+        @include mobile-only {
+            font-size: 1.1rem;
+        }
     }
     & h3 {
         @include menu4-gradient;
@@ -15,15 +27,35 @@
         font-weight: normal;
         font-family: 'Kaushan Script', cursive, serif;
         margin-top: 100px;
+        @include tablet-only {
+            margin: 60px 0 15px 0;
+            font-size: 3rem;
+        }
+        @include mobile-only {
+            margin: 60px 0 10px 0;
+            font-size: 1.9rem;
+        }
     }
     &__titres {
         @include menus-titre;
         & h4 {
             font-size: 1.2rem;
             margin: 0;
+            @include tablet-only {
+                font-size: 1.1rem;
+            }
+            @include mobile-only {
+                font-size: 1rem;
+            }
         }
         & img {
             width: 36%;
+            @include tablet-only {
+                width: 30%;
+            }
+            @include mobile-only {
+                width: 24%;
+            }
         }
     }
     & ul {
@@ -32,8 +64,20 @@
     & li {
         @include plats;
         font-size: 1rem;
+        @include tablet-only {
+            font-size: 0.65rem;
+        }
+        @include mobile-only {
+            font-size: 0.41rem;
+        }
     }
     & em {
         font-size: 1.2rem;
+        @include tablet-only {
+            font-size: 0.7rem;
+        }
+        @include mobile-only {
+            font-size: 0.44rem;
+        }
     }
 }
