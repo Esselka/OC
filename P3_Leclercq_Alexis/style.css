@@ -22,10 +22,10 @@ body {
   margin: 30px;
   overflow: hidden;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .menus__menu1 {
     width: 40vw;
-    height: 40vh;
+    height: 60vh;
     margin: 20px;
   }
 }
@@ -61,10 +61,10 @@ body {
   margin: 30px;
   overflow: hidden;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .menus__menu2 {
     width: 40vw;
-    height: 40vh;
+    height: 60vh;
     margin: 20px;
   }
 }
@@ -97,10 +97,10 @@ body {
   margin: 30px;
   overflow: hidden;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .menus__menu3 {
     width: 40vw;
-    height: 40vh;
+    height: 60vh;
     margin: 20px;
   }
 }
@@ -133,10 +133,10 @@ body {
   margin: 30px;
   overflow: hidden;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .menus__menu4 {
     width: 40vw;
-    height: 40vh;
+    height: 60vh;
     margin: 20px;
   }
 }
@@ -203,6 +203,11 @@ body {
 @media screen and (max-width: 599px) {
   .prochainement {
     font-size: 1rem;
+  }
+}
+@media screen and (max-width: 1288px) {
+  .prochainement {
+    font-size: 1.8rem;
   }
 }
 
@@ -307,7 +312,7 @@ main {
   box-shadow: 0 0 15px lightgrey;
   padding: 20px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .mentions_legales {
     width: 80%;
     font-size: 1rem;
@@ -325,7 +330,7 @@ main {
   font-size: 3rem;
   color: #3D1319;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .font-menu1-titre {
     font-size: 1.8rem;
   }
@@ -336,7 +341,7 @@ main {
   font-size: 3rem;
   color: #3D1319;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .font-menu1-menu {
     font-size: 1.8rem;
   }
@@ -349,7 +354,7 @@ main {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .font-menu2-titre {
     font-size: 1.3rem;
   }
@@ -361,7 +366,7 @@ main {
   font-weight: bold;
   color: #C77412;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .font-menu2-menu {
     font-size: 2.3rem;
   }
@@ -374,7 +379,7 @@ main {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .font-menu3-titre {
     font-size: 2rem;
   }
@@ -385,7 +390,7 @@ main {
   font-size: 3rem;
   color: #0887FB;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .font-menu3-menu {
     font-size: 2rem;
   }
@@ -398,7 +403,7 @@ main {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .font-menu4-titre {
     font-size: 1.9rem;
   }
@@ -409,7 +414,7 @@ main {
   font-size: 3rem;
   color: #72BF56;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .font-menu4-menu {
     font-size: 2rem;
   }
@@ -434,7 +439,7 @@ main {
   color: #3D1319;
   font-family: "SegoePrintBold", serif;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1 section {
     padding-bottom: 5rem;
   }
@@ -445,7 +450,7 @@ main {
     padding-bottom: 3rem;
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1 section {
     width: 65%;
   }
@@ -461,7 +466,7 @@ main {
   width: 6rem;
   height: 5.5rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1__top-note {
     padding-top: 40px;
     width: 4.5rem;
@@ -477,7 +482,7 @@ main {
 .page-menu1 h2 {
   font-size: 3rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1 h2 {
     font-size: 2rem;
   }
@@ -493,7 +498,7 @@ main {
   font-family: "Ma Shan Zheng", cursive, serif;
   margin: 0;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1 h3 {
     font-size: 2.5rem;
   }
@@ -511,7 +516,7 @@ main {
   width: 100%;
   margin-top: 60px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1__titres {
     margin-top: 30px;
   }
@@ -540,7 +545,7 @@ main {
 .page-menu1__titres h4::before {
   background-color: #3D1319;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1__titres h4 {
     font-size: 1.2rem;
   }
@@ -553,7 +558,7 @@ main {
 .page-menu1__titres img {
   width: 33%;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1__titres img {
     width: 30%;
   }
@@ -576,7 +581,7 @@ main {
   line-height: 280%;
   width: 100%;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1 li {
     font-size: 0.8rem;
   }
@@ -590,7 +595,7 @@ main {
   font-size: 1.5rem;
   font-weight: bold;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1 em {
     font-size: 1rem;
   }
@@ -605,7 +610,7 @@ main {
   align-items: center;
   margin: 4rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1__bottom-menu {
     margin: 1rem 0 3rem 0;
   }
@@ -628,7 +633,7 @@ main {
 .page-menu1__bottom-menu h3 {
   font-size: 2.2rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu1__bottom-menu h3 {
     font-size: 1.8rem;
   }
@@ -656,7 +661,7 @@ main {
   background-color: #FFF5FE;
   font-family: "Roboto Slab", serif;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu2 section {
     padding-bottom: 5rem;
   }
@@ -667,7 +672,7 @@ main {
     padding-bottom: 3rem;
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu2 section {
     width: 65%;
   }
@@ -680,7 +685,7 @@ main {
 .page-menu2 h2 {
   font-size: 3rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu2 h2 {
     font-size: 2rem;
   }
@@ -699,7 +704,7 @@ main {
   font-family: "Croissant One", cursive, serif;
   margin-top: 100px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu2 h3 {
     margin-top: 60px;
     font-size: 1.8rem;
@@ -719,7 +724,7 @@ main {
   width: 100%;
   margin-top: 60px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu2__titres {
     margin-top: 30px;
   }
@@ -728,7 +733,7 @@ main {
   font-size: 1.5rem;
   margin: 0;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu2__titres h4 {
     font-size: 1.1rem;
   }
@@ -741,7 +746,7 @@ main {
 .page-menu2__titres img {
   width: 30%;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu2__titres img {
     width: 27%;
   }
@@ -764,7 +769,7 @@ main {
   line-height: 280%;
   font-size: 1.2rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu2 li {
     font-size: 0.76rem;
   }
@@ -864,7 +869,7 @@ main {
   background-color: #EDEFEF;
   font-family: "SegoePrintBold", serif;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu3 section {
     padding-bottom: 5rem;
   }
@@ -875,7 +880,7 @@ main {
     padding-bottom: 3rem;
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu3 section {
     width: 65%;
   }
@@ -888,7 +893,7 @@ main {
 .page-menu3 h2 {
   font-size: 3rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu3 h2 {
     font-size: 2rem;
   }
@@ -907,7 +912,7 @@ main {
   font-family: "Dancing Script", cursive, serif;
   margin-top: 100px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu3 h3 {
     margin: 60px 0 15px 0;
     font-size: 3rem;
@@ -927,7 +932,7 @@ main {
   width: 100%;
   margin-top: 60px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu3__titres {
     margin-top: 30px;
   }
@@ -952,7 +957,7 @@ main {
   visibility: visible;
   width: 100%;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu3__titres h4 {
     font-size: 0.9rem;
   }
@@ -983,7 +988,7 @@ main {
   line-height: 280%;
   font-size: 1.1rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu3 li {
     font-size: 0.69rem;
   }
@@ -1011,7 +1016,7 @@ main {
   background-color: #FDFFFD;
   font-family: "SegoePrintBold", serif;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu4 section {
     padding-bottom: 5rem;
   }
@@ -1022,7 +1027,7 @@ main {
     padding-bottom: 3rem;
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu4 section {
     width: 65%;
   }
@@ -1035,7 +1040,7 @@ main {
 .page-menu4 h2 {
   font-size: 3rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu4 h2 {
     font-size: 2rem;
   }
@@ -1054,7 +1059,7 @@ main {
   font-family: "Kaushan Script", cursive, serif;
   margin-top: 100px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu4 h3 {
     margin: 60px 0 15px 0;
     font-size: 3rem;
@@ -1074,7 +1079,7 @@ main {
   width: 100%;
   margin-top: 60px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu4__titres {
     margin-top: 30px;
   }
@@ -1099,7 +1104,7 @@ main {
   visibility: visible;
   width: 100%;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu4__titres h4 {
     font-size: 1.1rem;
   }
@@ -1112,7 +1117,7 @@ main {
 .page-menu4__titres img {
   width: 36%;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu4__titres img {
     width: 30%;
   }
@@ -1135,7 +1140,7 @@ main {
   line-height: 280%;
   font-size: 1rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu4 li {
     font-size: 0.65rem;
   }
@@ -1148,7 +1153,7 @@ main {
 .page-menu4 em {
   font-size: 1.2rem;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1288px) {
   .page-menu4 em {
     font-size: 0.7rem;
   }
