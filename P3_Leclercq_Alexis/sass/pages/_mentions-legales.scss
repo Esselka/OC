@@ -2,5 +2,16 @@
     margin: auto;
     color: #000;
     text-align: justify;
-    width: 1100px;
+    max-width: 1200px;
+    background-color: rgb(243, 243, 243);
+    box-shadow: 0 0 15px lightgrey;
+    padding: 20px;
+    @include tablet-only {
+        width: 80%;
+        font-size: 1rem;
+    }
+    @include mobile-only {
+        padding: 5px;
+        width: 90%;
+    }
 }
