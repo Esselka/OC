@@ -106,3 +106,21 @@
         @content;
     }
 }
+
+@mixin souligner {
+    &::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        background-color: black;
+        left: 0;
+        visibility: hidden;
+        transition: all 200ms ease-in-out;
+    }
+    &:hover::before {
+        visibility: visible;
+        width: 100%;
+    }
+}

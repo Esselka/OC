@@ -56,6 +56,11 @@
             font-weight: bold;
             font-size: 1.6rem;
             margin: 0;
+            position: relative;
+            @include souligner;
+            &::before {
+                background-color: $menu1-color;
+            }
             @include tablet-only {
                 font-size: 1.2rem;
             }

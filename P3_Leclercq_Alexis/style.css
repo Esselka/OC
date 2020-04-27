@@ -505,6 +505,25 @@ main {
   font-weight: bold;
   font-size: 1.6rem;
   margin: 0;
+  position: relative;
+}
+.page-menu1__titres h4::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  background-color: black;
+  left: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in-out;
+}
+.page-menu1__titres h4:hover::before {
+  visibility: visible;
+  width: 100%;
+}
+.page-menu1__titres h4::before {
+  background-color: #3D1319;
 }
 @media screen and (max-width: 1024px) {
   .page-menu1__titres h4 {
@@ -749,6 +768,69 @@ main {
 .page-menu2--couleur-dessert {
   color: #6E4CCC;
 }
+.page-menu2--souligner-entree {
+  position: relative;
+}
+.page-menu2--souligner-entree::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  background-color: black;
+  left: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in-out;
+}
+.page-menu2--souligner-entree:hover::before {
+  visibility: visible;
+  width: 100%;
+}
+.page-menu2--souligner-entree::before {
+  background-color: #C67412;
+}
+.page-menu2--souligner-plat {
+  position: relative;
+}
+.page-menu2--souligner-plat::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  background-color: black;
+  left: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in-out;
+}
+.page-menu2--souligner-plat:hover::before {
+  visibility: visible;
+  width: 100%;
+}
+.page-menu2--souligner-plat::before {
+  background-color: #A56799;
+}
+.page-menu2--souligner-dessert {
+  position: relative;
+}
+.page-menu2--souligner-dessert::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  background-color: black;
+  left: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in-out;
+}
+.page-menu2--souligner-dessert:hover::before {
+  visibility: visible;
+  width: 100%;
+}
+.page-menu2--souligner-dessert::before {
+  background-color: #6E4CCC;
+}
 
 .page-menu3 {
   display: flex;
@@ -838,6 +920,22 @@ main {
 .page-menu3__titres h4 {
   font-size: 1.5rem;
   margin: 0;
+  position: relative;
+}
+.page-menu3__titres h4::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  background-color: black;
+  left: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in-out;
+}
+.page-menu3__titres h4:hover::before {
+  visibility: visible;
+  width: 100%;
 }
 @media screen and (max-width: 1024px) {
   .page-menu3__titres h4 {
@@ -969,6 +1067,22 @@ main {
 .page-menu4__titres h4 {
   font-size: 1.2rem;
   margin: 0;
+  position: relative;
+}
+.page-menu4__titres h4::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  background-color: black;
+  left: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in-out;
+}
+.page-menu4__titres h4:hover::before {
+  visibility: visible;
+  width: 100%;
 }
 @media screen and (max-width: 1024px) {
   .page-menu4__titres h4 {

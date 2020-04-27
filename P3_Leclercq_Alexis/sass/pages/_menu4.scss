@@ -41,6 +41,8 @@
         & h4 {
             font-size: 1.2rem;
             margin: 0;
+            position: relative;
+            @include souligner;
             @include tablet-only {
                 font-size: 1.1rem;
             }

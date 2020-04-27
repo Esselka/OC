@@ -80,4 +80,25 @@
     &--couleur-dessert {
         color: $menu2-titre-color-dessert;
     }
+    &--souligner-entree {
+        position: relative;
+        @include souligner;
+        &::before {
+            background-color: $menu2-titre-color-entree;
+        }
+    }
+    &--souligner-plat {
+        position: relative;
+        @include souligner;
+        &::before {
+            background-color: $menu2-titre-color-plat;
+        }
+    }
+    &--souligner-dessert {
+        position: relative;
+        @include souligner;
+        &::before {
+            background-color: $menu2-titre-color-dessert;
+        }
+    }
 }
