@@ -437,6 +437,7 @@ main {
 }
 @media screen and (max-width: 599px) {
   .page-menu1 section {
+    padding: 0 3% 3rem 3%;
     width: 85%;
   }
 }

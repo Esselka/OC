@@ -11,6 +11,7 @@
             width: 65%;
         }
         @include mobile-only {
+            padding: 0 3% 3rem 3%;
             width: 85%;
         }
     }
