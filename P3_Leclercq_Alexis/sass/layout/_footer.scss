@@ -32,7 +32,7 @@ footer {
         padding: 0 30px;
         color: $secondary-color;
         &:hover {
-            animation: wiggle 1200ms infinite ease-in-out both;
+            animation: wiggle 700ms infinite ease-in-out both;
         }
         @include mobile-only {
             font-size: 0.8rem;

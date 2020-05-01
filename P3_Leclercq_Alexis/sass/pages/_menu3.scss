@@ -4,7 +4,7 @@
     & section {
         @include page-section;
         background-color: $menu3-bg-color;
-        font-family: 'SegoePrintBold', serif;
+        font-family: 'SegoePrint', serif;
         @include tablet-only {
             width: 65%;
         }
@@ -40,6 +40,7 @@
         @include menus-titre;
         & h4 {
             font-size: 1.5rem;
+            font-weight: normal;
             margin: 0;
             position: relative;
             @include souligner;
@@ -53,7 +54,7 @@
         & img {
             width: 30%;
             @include mobile-only {
-                width: 24%;
+                width: 28%;
             }
         }
     }
@@ -62,7 +63,7 @@
     }
     & li {
         @include plats;
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         @include tablet-only {
             font-size: 0.69rem;
         }

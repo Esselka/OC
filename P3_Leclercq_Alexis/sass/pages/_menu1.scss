@@ -6,7 +6,7 @@
         padding: 0 8%;
         background-color: $menu1-bg-color;
         color: $menu1-color;
-        font-family: 'SegoePrintBold', serif;
+        font-family: 'SegoePrint', serif;
         @include tablet-only {
             width: 65%;
         }
@@ -54,7 +54,7 @@
         @include menus-titre;
         & h4 {
             font-weight: bold;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin: 0;
             position: relative;
             @include souligner;
@@ -65,7 +65,7 @@
                 font-size: 1.2rem;
             }
             @include mobile-only {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
             }
         }
         & img {
@@ -84,6 +84,7 @@
     & li {
         @include plats;
         width: 100%;
+        font-size: 1.3rem;
         @include tablet-only {
             font-size: 0.8rem;
         }
@@ -92,13 +93,12 @@
         }
     }
     & em {
-        font-size: 1.5rem;
         font-weight: bold;
         @include tablet-only {
-            font-size: 1rem;
+            font-size: 0.8rem;
         }
         @include mobile-only {
-            font-size: 0.6rem;
+            font-size: 0.5rem;
         }
     }
     &__bottom-menu {

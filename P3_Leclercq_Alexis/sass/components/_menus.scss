@@ -4,43 +4,43 @@
     justify-content: center;
     margin: 0;
     padding: 0;
-    &__menu1 {
+    &__menu-item:nth-child(1) {
         @include menu;
-        &--bg-color {
-            background-color: $menu1-bg-color;
+        background-color: $menu1-bg-color;
+        & a {
             @include menu-display;
         }
         & img {
-            width: 30%;
+            width: 18%;
         }
         & p {
             margin: 0 0 15px 0;
         }
     }
-    &__menu2 {
+    &__menu-item:nth-child(2) {
         @include menu;
-        &--bg-color {
-            background-color: $menu2-bg-color;
+        background-color: $menu2-bg-color;
+        & a {
             @include menu-display;
         }
         & p {
             margin: 15px 0 0 0;
         }
     }
-    &__menu3 {
+    &__menu-item:nth-child(3) {
         @include menu;
-        &--bg-color {
-            background-color: $menu3-bg-color;
+        background-color: $menu3-bg-color;
+        & a {
             @include menu-display;
         }
         & p {
             margin: 15px 0 0 0;
         }
     }
-    &__menu4 {
+    &__menu-item:nth-child(4) {
         @include menu;
-        &--bg-color {
-            background-color: $menu4-bg-color;
+        background-color: $menu4-bg-color;
+        & a {
             @include menu-display;
         }
         & p {
