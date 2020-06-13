@@ -14,8 +14,10 @@ var apiDatas;
 // Pour éviter d'afficher plusieurs fois le formulaire dans le panier en cas de clic répété de l'utilisateur
 var formIsNotOnPage = true;
 
-// IIFE : à chaque chargement d'une page, exécute cette fonction une fois et 
-// récupère les données de l'API puis appel une fonction propre à cette page
+/**
+ * IIFE : à chaque chargement d'une page, exécute cette fonction une fois et 
+ * récupère les données de l'API puis appel une fonction propre à cette page
+ */
 (function fetchAPIOneTime() {
     fetch("http://localhost:3000/api/teddies")
         .then(res => res.json())
@@ -77,7 +79,6 @@ function getTeddyInfos(index) {
                 </div>
             </article>`;
     }
-
 }
 
 /**
@@ -87,14 +88,15 @@ function showProductInfos() {
     let currentTeddyIndex = apiDatas.findIndex(id => id._id === TEDDY_ID);
     let colors = document.querySelector('#colors');
 
-    // Si l'id de l'article === undefined, affiche un message d'erreur
     if (apiDatas.find(id => id._id === TEDDY_ID) === undefined) {
+        // Si l'id de l'article est introuvable, affiche un message d'erreur
         let article = document.querySelector('#article');
         article.innerHTML = `
         <h3 class='text-justify'>Nous sommes désolé mais nous ne trouvons pas l'article que vous demandez :(</h3>
             <p>Veuillez retournez à l'accueil pour faire un autre choix.</p>`;
         colors.innerHTML += `<option value="null">Article introuvable</option>`;
     } else {
+        // Affiche un descriptif du produit et permet de choisir une quantité et une couleur
         getTeddyInfos(currentTeddyIndex);
         let price = document.querySelector(`#price`);
         const currentTeddy = apiDatas.find(id => id._id === TEDDY_ID)
@@ -116,9 +118,7 @@ function showProductInfos() {
 
 }
 
-/**
- * Charge et affiche tous les produits sur la page d'accueil
- */
+//Charge et affiche tous les produits de l'API sur la page d'accueil
 function getAllTeddies() {
     for (index in apiDatas) {
         getTeddyInfos(index);
@@ -126,8 +126,8 @@ function getAllTeddies() {
 }
 
 /**
- * Création des données persistantes dans localStorage
- * pour récupération des données dans la page panier.html
+ * Création des données persistantes localStorage
+ * pour utilisation dans le panier
  */
 function addToCart() {
     let currentTeddyIndex = apiDatas.findIndex(id => id._id === TEDDY_ID)
@@ -136,6 +136,7 @@ function addToCart() {
     let chosenColor = document.querySelector('#colors').value;
     let chosenNumOfArticles = document.querySelector('#count').value;
 
+    // Stockage des données de l'article en cours dans un objet
     let myArticle = {
         color: chosenColor,
         numberOfArticles: Number(chosenNumOfArticles),
@@ -143,15 +144,18 @@ function addToCart() {
     };
 
     if (localStorage.getItem(ARTICLES) === null) {
+        // Si le localStorage est vide, crée un tableau contenant l'objet myArticle et l'ajouter au localStorage
         let anArray = [];
         anArray.push(myArticle);
         localStorage.setItem(ARTICLES, JSON.stringify(anArray));
         confirmAddedToCart.innerHTML = `<p>Article ajouté à votre panier ✔️</p>`;
 
     } else {
+        // Récupère les articles du panier
         let currentArticles = JSON.parse(localStorage.getItem(ARTICLES));
 
         if (currentArticles.find(element => element.id === TEDDY_ID) === undefined) {
+            // Si l'id de notre produit n'existe pas encore dans le panier, l'ajoute au panier
             currentArticles.push(myArticle);
 
             localStorage.setItem(ARTICLES, JSON.stringify(currentArticles));
@@ -159,13 +163,14 @@ function addToCart() {
             confirmAddedToCart.innerHTML = `<p>Article ajouté à votre panier ✔️</p>`
 
         } else {
-
             if ((currentArticles.findIndex(element => element.id === TEDDY_ID && element.color === chosenColor)) == -1) {
+                // Si aucun article stocké n'a l'id du produit ET la couleur choisie alors on l'ajoute au panier
                 currentArticles.push(myArticle);
                 localStorage.setItem(ARTICLES, JSON.stringify(currentArticles));
 
                 confirmAddedToCart.innerHTML = `<p>Article ajouté à votre panier ✔️</p>`
             } else {
+                // Si un article du panier a l'id du produit ET la couleur choisie alors lui ajouter le nombre d'article sélectionné
                 let currentArticleIndex = currentArticles.findIndex(element => element.id === TEDDY_ID && element.color === chosenColor);
                 currentArticles[currentArticleIndex].numberOfArticles += Number(chosenNumOfArticles);
                 localStorage.setItem(ARTICLES, JSON.stringify(currentArticles));
@@ -186,6 +191,7 @@ function getCartDatas() {
     let subTotal2 = document.querySelector('#subTotal2');
 
     if (localStorage.getItem(ARTICLES) === null) {
+        // Si le localStorage ne contient pas d'article -> affiche 'panier vide'
         document.querySelector('#price').hidden = true;
         cart.innerHTML = `<h4>Votre panier est vide pour le moment.</h4>
         <p>Votre panier est là pour vous servir. N'hésitez pas à parcourir notre sélection d'articles, bons achats sur Orinoco.</p>`;
@@ -195,11 +201,16 @@ function getCartDatas() {
         let totalPrice = 0;
 
         cartArray.forEach(async function(element, index, array) {
-            let data = await getApiInfosById(element.id);
+            /**
+             * Pour chaque article du panier, affiche l'image, le nom, la description, le prix total des articles sélectionnés,
+             * la couleur, la quantité, pouvoir modifier la quantité et la possibilité de supprimer l'article du panier
+             *  */
+            try {
+                let data = await getApiInfosById(element.id);
 
-            totalPrice += Number(data.price / 100 * element.numberOfArticles);
+                totalPrice += Number(data.price / 100 * element.numberOfArticles);
 
-            cart.innerHTML += `
+                cart.innerHTML += `
                     <article class="row">
                         <div class="col-12 col-md-3 mx-auto">
                             <img src="${data.imageUrl}" alt="teddy the bear" class="img-thumbnail p-1 mb-3 mb-md-0 mx-auto">
@@ -232,21 +243,22 @@ function getCartDatas() {
                     </article>
                     <hr>`;
 
-            if (index === array.length - 1) {
-                /**
-                 * Utilisation de setTimeout() pour que le callback soit exécuté en dernier étant donné
-                 * qu'il s'agit d'une fonction du navigateur web qui sera exécuté dans la 'Callback Queue'
-                 * et que la Callback queue n'est exécuté qu'en tout dernier quand l'Event loop est vide.
-                 * Mon but ici est d'avoir un affichage correct de la valeur de totalPrice
-                 */
-                setTimeout(() => {
-                    let totalArticles = 0;
+                if (index === array.length - 1) {
+                    /**
+                     * Utilisation de setTimeout() pour que le callback soit exécuté en dernier étant donné
+                     * qu'il s'agit d'une fonction du navigateur web qui sera exécuté dans la 'Callback Queue'
+                     * et que la Callback queue n'est exécuté qu'en tout dernier quand l'Event loop est vide.
+                     * Mon but ici est d'avoir un affichage correct de la valeur de totalPrice
+                     */
+                    setTimeout(() => {
+                        let totalArticles = 0;
 
-                    cartArray.forEach(element => {
-                        totalArticles += Number(element.numberOfArticles);
-                    });
+                        cartArray.forEach(element => {
+                            totalArticles += Number(element.numberOfArticles);
+                        });
 
-                    subTotal.innerHTML = `
+                        // Récapitulatif de la somme de tous les articles à cet instant avant tous les articles
+                        subTotal.innerHTML = `
                         <div class="row">
                             <div class="col-11 col-lg-4 bg-light p-3 mx-auto border rounded">
                                 <h5>Sous-total (${totalArticles} ${totalArticles > 1 ? 'articles' : 'article'}) : <strong class="text-danger">${totalPrice} €</strong></h5>
@@ -254,7 +266,8 @@ function getCartDatas() {
                             </div>
                         </div>`;
 
-                    subTotal2.innerHTML = `
+                        // Récapitulatif de la somme de tous les articles à cet instant après tous les articles
+                        subTotal2.innerHTML = `
                         <div class="row">
                             <div class="col-12 d-flex justify-content-around">
                                 <h5>Sous-total (${totalArticles} ${totalArticles > 1 ? 'articles' : 'article'}) : <strong class="text-danger">${totalPrice} €</strong></h5>
@@ -262,17 +275,20 @@ function getCartDatas() {
                             </div>
                         </div>`;
 
-                    localStorage.setItem(TOTAL_PRICE, totalPrice);
-                    localStorage.setItem(NUMBER_OF_ARTICLES, totalArticles);
-                }, 50);
-
+                        // Stockage du prix total et du nombre d'articles pour la page de confirmation
+                        localStorage.setItem(TOTAL_PRICE, totalPrice);
+                        localStorage.setItem(NUMBER_OF_ARTICLES, totalArticles);
+                    }, 50);
+                }
+            } catch (error) {
+                console.error('Erreur: fonction getCartDatas()', error)
             }
         });
     }
 }
 
 /**
- * Récupérer les infos d'un article en envoyant son id à l'API
+ * Récupére les infos d'un article en envoyant son id à l'API
  * @param {string} id - l'id d'un article 
  */
 async function getApiInfosById(id) {
@@ -285,8 +301,8 @@ async function getApiInfosById(id) {
 }
 
 /**
- * Permet d'éviter que plusieurs formulaires 
- * soient visibles sur la page du panier
+ * Si l'utilisateur clic plusieurs fois sur 'Passer la commande' -> permet 
+ * d'éviter que plusieurs formulaires ne soient visibles sur la page du panier
  */
 function showForm() {
     if (formIsNotOnPage) {
@@ -338,6 +354,7 @@ function validateFormAndPostToAPI() {
                 </button>
             </div>`;
         } else {
+            // Objet contact à envoyer à l'API
             const contact = {
                 firstName: firstName.value,
                 lastName: lastName.value,
@@ -377,8 +394,8 @@ function validateFormAndPostToAPI() {
 }
 
 /**
- * Affichage de la confirmation de la commande, un récapitulatif de la commande
- * ainsi que l'affichage de l'id et du prix total
+ * Affichage de la confirmation de la commande, d'un récapitulatif de la commande
+ * ainsi que son id récupéré de l'API et du prix total
  */
 function getConfirmPageInfos() {
     let confirmPage = document.querySelector('#confirm');
@@ -386,10 +403,12 @@ function getConfirmPageInfos() {
     let allArticles = JSON.parse(localStorage.getItem(ARTICLES));
 
     if (orderInfos == null) {
+        // S'il n'y a aucune commande en cours, informe l'utilisateur
         document.querySelector('#commandConfirm').hidden = true;
         confirmPage.innerHTML = `
         <h2 class="text-center">Désolé, aucune commande n'est en cours, veuillez revenir à l'accueil pour effectuer vos achats.</h2><hr>`;
     } else {
+        // Affichage du récapitulatif de la commande et de sa confirmation
         document.querySelector('#commandId').innerHTML = orderInfos.orderId;
 
         confirmPage.innerHTML = `
@@ -453,6 +472,18 @@ function removeArticle(index) {
     let cartArticles = JSON.parse(localStorage.getItem(ARTICLES));
     cartArticles.splice(index, 1);
     localStorage.setItem(ARTICLES, JSON.stringify(cartArticles));
+
+    if (cartArticles.length == 0) {
+        /**
+         * S'il n'y a plus d'article dans le panier alors
+         * Suppression du contenu des <div> affichant le sous-total du prix du panier
+         * et des éléments du localStorage ce qui vide le panier
+         *  */
+        document.querySelector('#subTotal').innerHTML = "";
+        document.querySelector('#subTotal2').innerHTML = "";
+
+        [ARTICLES, NUMBER_OF_ARTICLES, TOTAL_PRICE].forEach(element => localStorage.removeItem(element));
+    }
 
     getCartDatas();
 }
