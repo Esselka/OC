@@ -1,11 +1,11 @@
 // Index des Teddy pour la page produits, affiche correctement les infos de chaque Teddy (img, description etc...)
 const urlParams = new URLSearchParams(window.location.search);
-const INDEX_TEDDY = urlParams.get('teddy');
+const TEDDY_ID = urlParams.get('productId');
 
 // Création des constantes pour le localStorage
 const ARTICLES = 'articles';
 const ORDER_INFOS = 'orderInfos';
-const NUMBER_OF_ARTICLES = 'numberOfArticles';
+const NUMBER_OF_ARTICLES = 'articlesQuantity';
 const TOTAL_PRICE = 'totalPrice';
 
 // Stockage du résultat du fetch de l'API
@@ -49,6 +49,7 @@ var formIsNotOnPage = true;
  */
 function getTeddyInfos(index) {
     let articles = document.querySelector(`#articles`);
+    let article = document.querySelector(`#article`);
 
     if (window.location.pathname == '/Front/index.html') {
         articles.innerHTML += `
@@ -59,7 +60,7 @@ function getTeddyInfos(index) {
                 <h5 class="card-title text-center">${apiDatas[index].name}</h5>
                 <p class="card-text text-justify">${apiDatas[index].description}</p>
             </div>
-                <a href="produit.html?teddy=${index}" class="btn btn-primary mx-auto mb-3">Plus d'infos</a>
+                <a href="produit.html?productId=${apiDatas[index]._id}" class="btn btn-primary mx-auto mb-3">Plus d'infos</a>
             </div>
         </article>`;
     }
@@ -80,17 +81,39 @@ function getTeddyInfos(index) {
 }
 
 /**
- * Affiche les infos concernant le Teddy dont l'index est INDEX_TEDDY
+ * Affiche les infos concernant le Teddy dont l'id est TEDDY_ID
  */
 function showProductInfos() {
-    getTeddyInfos(INDEX_TEDDY);
-    let article = document.querySelector(`#price`);
-    price.innerHTML += `<p class="card-text text-center font-weight-bold mx-3"><u>Prix</u> : ${apiDatas[INDEX_TEDDY].price/100} €</p>`;
+    let currentTeddyIndex = apiDatas.findIndex(id => id._id === TEDDY_ID);
     let colors = document.querySelector('#colors');
 
-    for (let i = 0; i < apiDatas[INDEX_TEDDY].colors.length; i++) {
-        colors.innerHTML += `<option value="${apiDatas[INDEX_TEDDY].colors[i]}">${apiDatas[INDEX_TEDDY].colors[i]}</option>`;
+    // Si l'id de l'article === undefined, affiche un message d'erreur
+    if (apiDatas.find(id => id._id === TEDDY_ID) === undefined) {
+        let article = document.querySelector('#article');
+        article.innerHTML = `
+        <h3 class='text-justify'>Nous sommes désolé mais nous ne trouvons pas l'article que vous demandez :(</h3>
+            <p>Veuillez retournez à l'accueil pour faire un autre choix.</p>`;
+        colors.innerHTML += `<option value="null">Article introuvable</option>`;
+    } else {
+        getTeddyInfos(currentTeddyIndex);
+        let price = document.querySelector(`#price`);
+        const currentTeddy = apiDatas.find(id => id._id === TEDDY_ID)
+
+        price.innerHTML += `
+        <p class="card-text text-center font-weight-bold mx-3"><u>Prix</u> : ${currentTeddy.price/100} €</p>
+        <select class="col-3 col-md-2" id="count">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>`;
+
+        for (let i = 0; i < currentTeddy.colors.length; i++) {
+            colors.innerHTML += `<option value="${currentTeddy.colors[i]}">${currentTeddy.colors[i]}</option>`;
+        }
     }
+
 }
 
 /**
@@ -107,27 +130,49 @@ function getAllTeddies() {
  * pour récupération des données dans la page panier.html
  */
 function addToCart() {
-    let teddy = apiDatas[INDEX_TEDDY];
+    let currentTeddyIndex = apiDatas.findIndex(id => id._id === TEDDY_ID)
+    let teddy = apiDatas[currentTeddyIndex];
     let confirmAddedToCart = document.querySelector('#addedToCart');
+    let chosenColor = document.querySelector('#colors').value;
+    let chosenNumOfArticles = document.querySelector('#count').value;
+
+    let myArticle = {
+        color: chosenColor,
+        numberOfArticles: Number(chosenNumOfArticles),
+        id: teddy._id
+    };
 
     if (localStorage.getItem(ARTICLES) === null) {
+        let anArray = [];
+        anArray.push(myArticle);
+        localStorage.setItem(ARTICLES, JSON.stringify(anArray));
+        confirmAddedToCart.innerHTML = `<p>Article ajouté à votre panier ✔️</p>`;
 
-        localStorage.setItem(ARTICLES, teddy._id)
-        localStorage.setItem(TOTAL_PRICE, teddy.price / 100)
-        localStorage.setItem(NUMBER_OF_ARTICLES, 1)
-        confirmAddedToCart.innerHTML = `<p>Article ajouté à votre panier ✔️</p>`
     } else {
-        let temp_articles = [];
-        let newTotalPrice = Number(localStorage.getItem(TOTAL_PRICE)) + Number(teddy.price / 100);
-        let newNumberOfArticles = Number(localStorage.getItem(NUMBER_OF_ARTICLES)) + 1;
+        let currentArticles = JSON.parse(localStorage.getItem(ARTICLES));
 
-        temp_articles.push(localStorage.getItem(ARTICLES), teddy._id);
+        if (currentArticles.find(element => element.id === TEDDY_ID) === undefined) {
+            currentArticles.push(myArticle);
 
-        localStorage.setItem(ARTICLES, temp_articles);
-        localStorage.setItem(TOTAL_PRICE, newTotalPrice);
-        localStorage.setItem(NUMBER_OF_ARTICLES, newNumberOfArticles);
+            localStorage.setItem(ARTICLES, JSON.stringify(currentArticles));
 
-        confirmAddedToCart.innerHTML = `<p>Article ajouté à votre panier ✔️</p>`
+            confirmAddedToCart.innerHTML = `<p>Article ajouté à votre panier ✔️</p>`
+
+        } else {
+
+            if ((currentArticles.findIndex(element => element.id === TEDDY_ID && element.color === chosenColor)) == -1) {
+                currentArticles.push(myArticle);
+                localStorage.setItem(ARTICLES, JSON.stringify(currentArticles));
+
+                confirmAddedToCart.innerHTML = `<p>Article ajouté à votre panier ✔️</p>`
+            } else {
+                let currentArticleIndex = currentArticles.findIndex(element => element.id === TEDDY_ID && element.color === chosenColor);
+                currentArticles[currentArticleIndex].numberOfArticles += Number(chosenNumOfArticles);
+                localStorage.setItem(ARTICLES, JSON.stringify(currentArticles));
+
+                confirmAddedToCart.innerHTML = `<p>Article ajouté à votre panier ✔️</p>`
+            }
+        }
     }
 }
 
@@ -135,7 +180,7 @@ function addToCart() {
  * Récupère toutes les données nécessaires à l'affichage du panier
  * de l'utilisateur via localStorage
  */
-async function getCartDatas() {
+function getCartDatas() {
     let cart = document.querySelector('#cart');
     let subTotal = document.querySelector('#subTotal');
     let subTotal2 = document.querySelector('#subTotal2');
@@ -145,47 +190,97 @@ async function getCartDatas() {
         cart.innerHTML = `<h4>Votre panier est vide pour le moment.</h4>
         <p>Votre panier est là pour vous servir. N'hésitez pas à parcourir notre sélection d'articles, bons achats sur Orinoco.</p>`;
     } else {
-        let cartArray = localStorage.getItem(ARTICLES).split(',');
+        cart.innerHTML = "";
+        let cartArray = JSON.parse(localStorage.getItem(ARTICLES));
+        let totalPrice = 0;
 
         cartArray.forEach(async function(element, index, array) {
-            try {
-                const res = await fetch(`http://localhost:3000/api/teddies/${element.replace(/\"/g, '')}`);
-                const data = await res.json();
+            let data = await getApiInfosById(element.id);
 
-                cart.innerHTML += `
+            totalPrice += Number(data.price / 100 * element.numberOfArticles);
+
+            cart.innerHTML += `
                     <article class="row">
-                        <img src="${data.imageUrl}" alt="teddy the bear" class="col-11 col-md-3 img-thumbnail p-1 mb-3 mb-md-0 mx-auto">
-                        <div class="col-10 col-md-7 mx-auto">
-                            <h4>${data.name}</h4>
-                            <p>${data.description}</p>
+                        <div class="col-12 col-md-3 mx-auto">
+                            <img src="${data.imageUrl}" alt="teddy the bear" class="img-thumbnail p-1 mb-3 mb-md-0 mx-auto">
                         </div>
-                        <div class="col-2">
-                            <p class="position-relative float-right text-danger font-weight-bold">${data.price/100} €</p>
+                        <div class="col-12 col-md-9 mx-auto">
+                            <div class="d-flex justify-content-between">
+                                <h4>${data.name}</h4>
+                                <p class="text-danger font-weight-bold">${data.price/100 * element.numberOfArticles} €</p>
+                            </div>
+                            <p class="mb-2 text-justify">${data.description}</p>
+                            <div class="d-flex justify-content-between">
+                                <p class="mb-0 small">Couleur: ${element.color}</p>
+                                <select id="qtySelector-${index}" class="small" onchange="updateQtyValue(${index})">
+                                    <option selected>Quantité (max 10)</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                            <p class="mb-2 small ">Quantité: ${element.numberOfArticles}</p>
+                            <button onclick="removeArticle(${index})" class="btn btn-secondary btn-sm">Supprimer</button>
                         </div>
                     </article>
                     <hr>`;
 
-                if (index === array.length - 1) {
+            if (index === array.length - 1) {
+                /**
+                 * Utilisation de setTimeout() pour que le callback soit exécuté en dernier étant donné
+                 * qu'il s'agit d'une fonction du navigateur web qui sera exécuté dans la 'Callback Queue'
+                 * et que la Callback queue n'est exécuté qu'en tout dernier quand l'Event loop est vide.
+                 * Mon but ici est d'avoir un affichage correct de la valeur de totalPrice
+                 */
+                setTimeout(() => {
+                    let totalArticles = 0;
+
+                    cartArray.forEach(element => {
+                        totalArticles += Number(element.numberOfArticles);
+                    });
+
                     subTotal.innerHTML = `
                         <div class="row">
                             <div class="col-11 col-lg-4 bg-light p-3 mx-auto border rounded">
-                                <h5>Sous-total (${localStorage.getItem(NUMBER_OF_ARTICLES)} ${localStorage.getItem(NUMBER_OF_ARTICLES) > 1 ? 'articles' : 'article'}) : <strong class="text-danger">${localStorage.getItem(TOTAL_PRICE)} €</strong></h5>
+                                <h5>Sous-total (${totalArticles} ${totalArticles > 1 ? 'articles' : 'article'}) : <strong class="text-danger">${totalPrice} €</strong></h5>
                                 <button onclick="showForm()" class="col-12 btn btn-warning border-dark">Passer la commande</button>  
                             </div>
                         </div>`;
 
-                    subTotal2.innerHTML += `
+                    subTotal2.innerHTML = `
                         <div class="row">
                             <div class="col-12 d-flex justify-content-around">
-                                <h5>Sous-total (${localStorage.getItem(NUMBER_OF_ARTICLES)} ${localStorage.getItem(NUMBER_OF_ARTICLES) > 1 ? 'articles' : 'article'}) : <strong class="text-danger">${localStorage.getItem(TOTAL_PRICE)} €</strong></h5>
+                                <h5>Sous-total (${totalArticles} ${totalArticles > 1 ? 'articles' : 'article'}) : <strong class="text-danger">${totalPrice} €</strong></h5>
                                 <button onclick="showForm()" class="btn btn-warning border-dark">Passer la commande</button>  
                             </div>
                         </div>`;
-                }
-            } catch (error) {
-                console.error(error);
+
+                    localStorage.setItem(TOTAL_PRICE, totalPrice);
+                    localStorage.setItem(NUMBER_OF_ARTICLES, totalArticles);
+                }, 50);
+
             }
         });
+    }
+}
+
+/**
+ * Récupérer les infos d'un article en envoyant son id à l'API
+ * @param {string} id - l'id d'un article 
+ */
+async function getApiInfosById(id) {
+    try {
+        const res = await fetch(`http://localhost:3000/api/teddies/${id}`);
+        return await res.json();
+    } catch (error) {
+        console.error(error);
     }
 }
 
@@ -251,7 +346,12 @@ function validateFormAndPostToAPI() {
                 email: email.value
             }
 
-            const products = localStorage.getItem(ARTICLES).split(',');
+            // Création d'un tableau ne contenant que les ids des articles
+            const allArticles = JSON.parse(localStorage.getItem(ARTICLES));
+            let products = [];
+            allArticles.forEach(element => {
+                products.push(element.id);
+            });
 
             const myOrder = { contact, products }
 
@@ -281,51 +381,91 @@ function validateFormAndPostToAPI() {
  * ainsi que l'affichage de l'id et du prix total
  */
 function getConfirmPageInfos() {
-    let confirmPage = document.getElementById('confirm');
+    let confirmPage = document.querySelector('#confirm');
     let orderInfos = JSON.parse(localStorage.getItem(ORDER_INFOS));
-    document.getElementById('commandId').innerHTML = orderInfos.orderId;
+    let allArticles = JSON.parse(localStorage.getItem(ARTICLES));
 
+    if (orderInfos == null) {
+        document.querySelector('#commandConfirm').hidden = true;
+        confirmPage.innerHTML = `
+        <h2 class="text-center">Désolé, aucune commande n'est en cours, veuillez revenir à l'accueil pour effectuer vos achats.</h2><hr>`;
+    } else {
+        document.querySelector('#commandId').innerHTML = orderInfos.orderId;
 
-    confirmPage.innerHTML = `
-    <div>
-        <h4 class="text-warning">Bonjour,</h4>
-        Nous vous remercions de votre commande sur Orinoco. Nous vous tiendrons informés par e-mail lorsque les articles de votre commande auront été expédiés.
-    </div>
-    <div class="col-12 col-md-7 col-lg-6 text-center mx-auto bg-light border p-3 mt-3">
-        <p>Votre commande sera expédiée à :</p>
-        <strong>${orderInfos.contact.firstName} ${orderInfos.contact.lastName}</strong><br>
-        <strong>${orderInfos.contact.address}</strong><br>
-        <strong>${orderInfos.contact.city}</strong><br>
-    </div>
-    <h5 class="text-warning mt-5 mb-0 pb-0">Détails de la commande</h5>
-    <hr class="mt-0 pt-0">
-    <div class="d-lg-flex justify-content-between mb-5">
-        <p>Commande n° <span class="text-primary">${orderInfos.orderId}</span></p>
-        <p><strong>Montant total de la commande</strong> (${localStorage.getItem(NUMBER_OF_ARTICLES)} ${localStorage.getItem(NUMBER_OF_ARTICLES) > 1 ? 'articles' : 'article'}) : <strong class="text-danger">${localStorage.getItem(TOTAL_PRICE)} €</strong></p>
-    </div>`;
+        confirmPage.innerHTML = `
+        <div>
+            <h4 class="text-warning">Bonjour,</h4>
+            Nous vous remercions de votre commande sur Orinoco. Nous vous tiendrons informés par e-mail lorsque les articles de votre commande auront été expédiés.
+        </div>
+        <div class="col-12 col-md-7 col-lg-6 text-center mx-auto bg-light border p-3 mt-3">
+            <p>Votre commande sera expédiée à :</p>
+            <strong>${orderInfos.contact.firstName} ${orderInfos.contact.lastName}</strong><br>
+            <strong>${orderInfos.contact.address}</strong><br>
+            <strong>${orderInfos.contact.city}</strong><br>
+        </div>
+        <h5 class="text-warning mt-5 mb-0 pb-0">Détails de la commande</h5>
+        <hr class="mt-0 pt-0">
+        <div class="d-lg-flex justify-content-between mb-5">
+            <p>Commande n° <span class="text-primary">${orderInfos.orderId}</span></p>
+            <p><strong>Montant total de la commande</strong> (${localStorage.getItem(NUMBER_OF_ARTICLES)} ${localStorage.getItem(NUMBER_OF_ARTICLES) > 1 ? 'articles' : 'article'}) : <strong class="text-danger">${localStorage.getItem(TOTAL_PRICE)} €</strong></p>
+        </div>`;
 
-    orderInfos.products.forEach(function(element, index, array) {
-        confirmPage.innerHTML += `
+        orderInfos.products.forEach(function(element, index, array) {
+            confirmPage.innerHTML += `
             <article class="row">
-                <img src="${element.imageUrl}" alt="teddy the bear" class="col-11 col-md-3 img-thumbnail p-1 mb-3 mb-md-0 mx-auto">
-                <div class="col-10 col-md-7 mx-auto">
-                    <h4>${element.name}</h4>
-                    <p>${element.description}</p>
+                <div class="col-12 col-md-3 mx-auto">
+                    <img src="${element.imageUrl}" alt="teddy the bear" class="img-thumbnail p-1 mb-3 mb-md-0 mx-auto">
                 </div>
-                <div class="col-2">
-                    <p class="position-relative float-right text-danger font-weight-bold">${element.price/100} €</p>
+                <div class="col-12 col-md-9 mx-auto">
+                    <div class="d-flex justify-content-between">
+                        <h4>${element.name}</h4>
+                        <p class="text-danger font-weight-bold">${element.price/100 * allArticles[index].numberOfArticles} €</p>
+                    </div>
+                    <p class="mb-2 text-justify">${element.description}</p>
+                    <div class="d-flex justify-content-between">
+                        <p class="mb-0 small">Couleur: ${allArticles[index].color}</p>
+                    </div>
+                    <p class="mb-2 small ">Quantité: ${allArticles[index].numberOfArticles}</p>
                 </div>
             </article>
             <hr>`;
 
-        if (index === array.length - 1) {
-            confirmPage.innerHTML += `
+            if (index === array.length - 1) {
+                confirmPage.innerHTML += `
             <p class="float-right"><strong>Montant total de la commande</strong> (${localStorage.getItem(NUMBER_OF_ARTICLES)} ${localStorage.getItem(NUMBER_OF_ARTICLES) > 1 ? 'articles' : 'article'}) : <strong class="text-danger">${localStorage.getItem(TOTAL_PRICE)} €</strong></p>
             <p class="mt-5">Nous espérons vous revoir bientôt.</p>
             <h4>Orinoco</h4>`;
-        }
-    });
+            }
+        });
 
-    // Suppression des éléments du localStorage ce qui vide le panier
-    [ARTICLES, ORDER_INFOS, NUMBER_OF_ARTICLES, TOTAL_PRICE].forEach(element => localStorage.removeItem(element));
+        // Suppression des éléments du localStorage ce qui vide le panier
+        [ARTICLES, ORDER_INFOS, NUMBER_OF_ARTICLES, TOTAL_PRICE].forEach(element => localStorage.removeItem(element));
+    }
+
+
+}
+
+/**
+ * Supprime l'article à l'emplacement : index, puis met à jour le localStorage
+ * @param {number} index - index de l'élement à supprimer dans le tableau des articles
+ */
+function removeArticle(index) {
+    let cartArticles = JSON.parse(localStorage.getItem(ARTICLES));
+    cartArticles.splice(index, 1);
+    localStorage.setItem(ARTICLES, JSON.stringify(cartArticles));
+
+    getCartDatas();
+}
+
+/**
+ * Modifie la quantité d'achat d'un article
+ * @param {numer} index - index de l'élement où la quantité doit être modifié
+ */
+function updateQtyValue(index) {
+    let qtySelector = document.querySelector(`#qtySelector-${index}`);
+    let cartArticles = JSON.parse(localStorage.getItem(ARTICLES));
+
+    cartArticles[index].numberOfArticles = qtySelector.value;
+    localStorage.setItem(ARTICLES, JSON.stringify(cartArticles));
+    getCartDatas();
 }
