@@ -25,12 +25,15 @@ var formIsNotOnPage = true;
             apiDatas = data;
             switch (window.location.pathname) {
                 case '/':
+                    getArticlesCounter();
                     getAllTeddies();
                     break;
                 case '/produit.html':
+                    getArticlesCounter();
                     showProductInfos();
                     break;
                 case '/panier.html':
+                    getArticlesCounter();
                     validateFormAndPostToAPI();
                     getCartDatas();
                     break;
@@ -103,13 +106,8 @@ function showProductInfos() {
 
         price.innerHTML += `
         <p class="card-text text-center font-weight-bold mx-3"><u>Prix</u> : ${currentTeddy.price/100} €</p>
-        <select class="col-3 col-md-2" id="count">
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>`;
+        <label for="count">Nombre d'articles (minimum 1):</label>
+        <input type="number" id="count" name="count" value="1" min="1">`;
 
         for (let i = 0; i < currentTeddy.colors.length; i++) {
             colors.innerHTML += `<option value="${currentTeddy.colors[i]}">${currentTeddy.colors[i]}</option>`;
@@ -135,6 +133,10 @@ function addToCart() {
     let confirmAddedToCart = document.querySelector('#addedToCart');
     let chosenColor = document.querySelector('#colors').value;
     let chosenNumOfArticles = document.querySelector('#count').value;
+
+    // Si l'utilisateur rentre manuellement un nombre d'article 
+    // inférieur ou égal à zéro dans le input -> définit 'chosenNumOfArticles' à 1
+    if (chosenNumOfArticles <= 0) chosenNumOfArticles = 1;
 
     // Stockage des données de l'article en cours dans un objet
     let myArticle = {
@@ -179,6 +181,8 @@ function addToCart() {
             }
         }
     }
+    // Met à jour le nombre d'articles dans l'info-bulle du Panier dans le header
+    getArticlesCounter();
 }
 
 /**
@@ -223,19 +227,11 @@ function getCartDatas() {
                             <p class="mb-2 text-justify">${data.description}</p>
                             <div class="d-flex justify-content-between">
                                 <p class="mb-0 small">Couleur: ${element.color}</p>
-                                <select id="qtySelector-${index}" class="small" onchange="updateQtyValue(${index})">
-                                    <option selected>Quantité (max 10)</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
+                                <div class="d-flex flex-column">
+                                    <label for="quantity" class="mx-auto"><small>Quantité (minimum 1):</small></label>
+                                    <input type="number" class="small" id="quantity" name="quantity" value="1" min="1">
+                                    <button onclick="updateQtyValue(${index})" class="btn btn-primary btn-sm mx-auto mt-2">Mettre à jour</button>
+                                </div> 
                             </div>
                             <p class="mb-2 small ">Quantité: ${element.numberOfArticles}</p>
                             <button onclick="removeArticle(${index})" class="btn btn-secondary btn-sm">Supprimer</button>
@@ -328,12 +324,23 @@ function validateFormAndPostToAPI() {
         let city = document.getElementById('city');
         let email = document.getElementById('email');
 
-        let letters = /^[A-Za-z]+$/;
-        if (!(firstName.value.match(letters) && lastName.value.match(letters) && city.value.match(letters))) {
-            // La bordure devient rouge pour les input où l'utilisateur n'a pas utilisé que des lettres
+        let letters = /^[A-zÀ-ú][A-zÀ-ú -]+$/;
+        let lettersAndNumbers = /^[A-zÀ-ú0-9][A-zÀ-ú0-9 -]+$/;
+
+        /**
+         * Vérifie qu'il n'y a pas de caractères non autorisés dans les champs remplis par l'utilisateur,
+         * et que l'utilisateur n'a pas rentré seulement le caractère espace dans l'un des champs.
+         */
+        if (!(firstName.value.match(letters) &&
+                lastName.value.match(letters) &&
+                city.value.match(letters) &&
+                address.value.match(lettersAndNumbers)
+            )) {
+            // La bordure devient rouge pour les input où l'utilisateur n'a respecté les conditions.
             firstName.classList.remove("border-danger");
             lastName.classList.remove("border-danger");
             city.classList.remove("border-danger");
+            address.classList.remove("border-danger");
 
             if (!firstName.value.match(letters)) {
                 firstName.classList.add("border-danger");
@@ -344,10 +351,15 @@ function validateFormAndPostToAPI() {
             if (!city.value.match(letters)) {
                 city.classList.add("border-danger");
             }
+            if (!address.value.match(lettersAndNumbers)) {
+                address.classList.add("border-danger");
+            }
             // Affichage d'une alerte expliquant comment remplir le formulaire correctement
             badFormat.innerHTML = `
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Oups, une petite erreur!</strong> Les champs 'Prénom', 'Nom' et 'Ville' n'accèptent que les lettres.<br>
+                <strong>Oups, une petite erreur!</strong><br>- Les champs 'Prénom', 'Nom' et 'Ville' n'accèptent que les lettres et le tiret.<br>
+                - Le champ 'Adresse' n'accèpte que les lettres, les chiffres et le tiret (attention à ne pas mettre de virgule).<br>
+                - <u>Vérifiez qu'il n'y ait pas d'espace avant vos réponses dans chaque champ</u>.<br><br>
                 Veuillez effectuer les modifications et appuyer de nouveau sur le bouton <strong>Acheter</strong>.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -486,6 +498,7 @@ function removeArticle(index) {
     }
 
     getCartDatas();
+    getArticlesCounter();
 }
 
 /**
@@ -493,10 +506,36 @@ function removeArticle(index) {
  * @param {numer} index - index de l'élement où la quantité doit être modifié
  */
 function updateQtyValue(index) {
-    let qtySelector = document.querySelector(`#qtySelector-${index}`);
+    let qtySelector = document.querySelector(`#quantity`);
+    if (qtySelector.value < 1) qtySelector.value = 1;
+
     let cartArticles = JSON.parse(localStorage.getItem(ARTICLES));
 
-    cartArticles[index].numberOfArticles = qtySelector.value;
+    cartArticles[index].numberOfArticles = Number(qtySelector.value);
     localStorage.setItem(ARTICLES, JSON.stringify(cartArticles));
     getCartDatas();
+    getArticlesCounter();
+}
+
+/**
+ * Affiche une info-bulle dans le header indiquant le nombre actuel d'articles dans le panier.
+ * N'affiche pas l'info-bulle si le panier est vide.
+ */
+function getArticlesCounter() {
+    let articles = JSON.parse(localStorage.getItem(ARTICLES))
+    let counter = document.querySelector('#cartCounter');
+    let totalCurrentArticles = 0;
+
+    if (articles != null) {
+        articles.forEach(element => {
+            totalCurrentArticles += element.numberOfArticles;
+        });
+    }
+
+    if (totalCurrentArticles > 0) {
+        counter.hidden = false;
+        counter.innerHTML = totalCurrentArticles;
+    } else {
+        counter.hidden = true;
+    }
 }
