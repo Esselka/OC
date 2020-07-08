@@ -1,6 +1,7 @@
 const Sauce = require('../models/Sauce');
 const fs = require('fs');
 
+// Création d'une nouvelle sauce dans la BDD
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce);
     delete sauceObject._id;
@@ -17,6 +18,7 @@ exports.createSauce = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
+// Récupère les données d'une sauce dont l'id === _id
 exports.getOneSauce = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => res.status(200).json(sauce))
@@ -39,6 +41,7 @@ exports.modifySauce = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 }
 
+// Suppression d'une sauce dans la BDD dont l'id === _id
 exports.deleteSauce = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => {
@@ -52,12 +55,14 @@ exports.deleteSauce = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 }
 
+// Récupération de toutes les sauces de la BDD
 exports.getAllSauces = (req, res, next) => {
     Sauce.find()
         .then(sauces => res.status(200).json(sauces))
         .catch(error => res.status(400).json({ error }));
 }
 
+// Gestion des likes pour les sauces
 exports.likeSauces = (req, res, next) => {
     const bodyObj = req.body;
     Sauce.findOne({ _id: req.params.id })

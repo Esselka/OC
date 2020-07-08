@@ -37,8 +37,13 @@ app.use(session({
     }
 }))
 
+// Permet de parser les requêtes envoyées apr le client, on accède au body via 'req.body'
 app.use(bodyParser.json());
+
+// Permet de charger les images dans le dossier 'images'
 app.use('/images', express.static(path.join(__dirname, 'images')));
+
+// Préfix des routes par défaut pour les requêtes
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
 
