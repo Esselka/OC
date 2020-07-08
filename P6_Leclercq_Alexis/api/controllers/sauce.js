@@ -19,7 +19,7 @@ exports.createSauce = (req, res, next) => {
 };
 
 // Récupère les données d'une sauce dont l'id === _id
-exports.getOneSauce = (req, res, next) => {
+exports.getOneSauce = (req, res) => {
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => res.status(200).json(sauce))
         .catch(error => res.status(404).json({ error: 'Sauce introuvable !' }));
@@ -30,19 +30,37 @@ exports.getOneSauce = (req, res, next) => {
  * S'il existe, on traite la nouvelle image ; s'il n'existe pas, on traite simplement l'objet entrant. 
  * On crée ensuite une instance Sauce à partir de sauceObject , puis on effectue la modification.
  */
-exports.modifySauce = (req, res, next) => {
-    const sauceObject = req.file ? {
-        ...JSON.parse(req.body.sauce),
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    } : {...req.body };
-
-    Sauce.updateOne({ _id: req.params.id }, {...sauceObject, _id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Objet modifié !' }))
-        .catch(error => res.status(400).json({ error }));
+exports.modifySauce = (req, res) => {
+    // S'il y a une nouvelle image, doit supprimer l'ancienne et mettre à jour l'URI de la nouvelle
+    if (req.file) {
+        // Crée un objet sauceObjet pour mettre à jour l'URI de l'image
+        const sauceObject = {
+            ...JSON.parse(req.body.sauce),
+            imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        }
+        // Recherche de l'URI de l'image actuelle pour suppression, 
+        // ce qui évite d'avoir des images inutilisées dans la BDD
+        Sauce.findOne({ _id: req.params.id })
+        .then(sauce => {
+            const filename = sauce.imageUrl.split('/images/')[1];
+            fs.unlink(`images/${filename}`, () => {
+                Sauce.updateOne({ _id: req.params.id }, {...sauceObject, _id: req.params.id })
+                    .then(() => res.status(200).json({ message: 'Sauce modifiée !' }))
+                    .catch(error => res.status(400).json({ error }));
+            })
+        })
+        .catch(error => res.status(500).json({ error }));
+    } else {
+        // S'il n'y a pas de nouvelle image, récupère les données du body et met à jour la sauce
+        const sauceObject = {...req.body };
+        Sauce.updateOne({ _id: req.params.id }, {...sauceObject, _id: req.params.id })
+            .then(() => res.status(200).json({ message: 'Sauce modifiée !' }))
+            .catch(error => res.status(400).json({ error }));
+    }
 }
 
 // Suppression d'une sauce dans la BDD dont l'id === _id
-exports.deleteSauce = (req, res, next) => {
+exports.deleteSauce = (req, res) => {
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => {
             const filename = sauce.imageUrl.split('/images/')[1];
@@ -56,14 +74,14 @@ exports.deleteSauce = (req, res, next) => {
 }
 
 // Récupération de toutes les sauces de la BDD
-exports.getAllSauces = (req, res, next) => {
+exports.getAllSauces = (req, res) => {
     Sauce.find()
         .then(sauces => res.status(200).json(sauces))
         .catch(error => res.status(400).json({ error }));
 }
 
 // Gestion des likes pour les sauces
-exports.likeSauces = (req, res, next) => {
+exports.likeSauces = (req, res) => {
     const bodyObj = req.body;
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => {

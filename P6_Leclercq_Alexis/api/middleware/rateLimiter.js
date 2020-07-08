@@ -16,7 +16,7 @@ const mongoConn = mongoose.createConnection(dbAddress, mongoOpts);
 const opts = {
     storeClient: mongoConn,
     points: 50, // Nombre de tentatives de connexion
-    duration: 60 * 60 * 24, // Temps total pour utiliser nos points de connexion
+    duration: 60 * 60 * 24, // 24h
 };
 
 const rateLimiterMongo = new RateLimiterMongo(opts);
