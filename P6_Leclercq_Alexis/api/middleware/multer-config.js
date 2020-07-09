@@ -1,3 +1,4 @@
+// Multer est un package qui nous permet de gérer les fichiers entrants dans les requêtes HTTP
 const multer = require('multer');
 
 // Récupération des MIME TYPES pour en extraire les extentions
@@ -24,4 +25,4 @@ const storage = multer.diskStorage({
     }
 });
 
-module.exports = multer({storage: storage}).single('image');
+module.exports = multer({ storage: storage }).single('image');

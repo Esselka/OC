@@ -7,7 +7,7 @@ exports.signup = (req, res) => {
     // Appel la fonction de hachage de bcrypt dans notre mot de passe et lui 
     // demandons de "saler" le mot de passe 10 fois = hachage plus sécurisé.
     bcrypt.hash(req.body.password, 10)
-    // Création d'un nouvel utilisateur et enregistrement dans la BDD
+        // Création d'un nouvel utilisateur et enregistrement dans la BDD
         .then(hash => {
             const user = new User({
                 email: req.body.email,
@@ -44,9 +44,7 @@ exports.login = (req, res) => {
                     // Dans ce cas, renvoie une réponse 200 contenant l'ID utilisateur et un token.
                     res.status(200).json({
                         userId: user._id,
-                        token: jwt.sign({ userId: user._id },
-                            'Ht5l5Mpon1)=3GdXwSDgJdè-(ddkUWC)_OpenclassroomsProjet6_JHKJY88è-1J<88', { expiresIn: '30min' }
-                        )
+                        token: jwt.sign({ userId: user._id }, process.env.JWT_TOKEN, { expiresIn: '30min' })
                     });
                 })
                 .catch(error => res.status(500).json({ error }));

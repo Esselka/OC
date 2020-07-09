@@ -6,7 +6,7 @@ const mongoOpts = {
     reconnectInterval: 100, // Reconnect every 100ms
 };
 
-const dbAddress = 'mongodb+srv://p6_oc_api:AcpHEYykiYvWa7J@cluster0-2ugsc.mongodb.net/pekocko'
+const dbAddress = process.env.DB_CONNECT
 
 mongoose.connect(dbAddress)
     .catch((err) => { error });
