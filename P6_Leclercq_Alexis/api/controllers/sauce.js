@@ -87,20 +87,29 @@ exports.likeSauces = (req, res) => {
         .then(sauce => {
             switch (bodyObj.like) {
                 case 1:
-                    sauce.likes++;
+                    // Si le tableau [usersLiked] ne contient pas userId alors 
+                    // incrémente likes de 1 et ajoute userId dans [usersLiked]
                     if (!sauce.usersLiked.includes(bodyObj.userId)) {
+                        sauce.likes++;
                         sauce.usersLiked.push(bodyObj.userId);
                     }
+                    // Si le tableau [usersDisliked] contient userId alors 
+                    // décrémente dislikes de 1 et enlève userId dans [usersDisliked]
                     if (sauce.usersDisliked.includes(bodyObj.userId)) {
+                        sauce.dislikes--;
                         sauce.usersDisliked = sauce.usersDisliked.filter(item => item != bodyObj.userId);
                     }
                     sauce.save();
                     break;
                 case 0:
+                    // Si le tableau [usersLiked] contient userId alors 
+                    // décrémente likes de 1 et enlève userId dans [usersLiked]
                     if (sauce.usersLiked.includes(bodyObj.userId)) {
                         sauce.likes--;
                         sauce.usersLiked = sauce.usersLiked.filter(item => item != bodyObj.userId);
                     }
+                    // Si le tableau [usersDisliked] contient userId alors 
+                    // décrémente dislikes de 1 et enlève userId dans [usersDisliked]
                     if (sauce.usersDisliked.includes(bodyObj.userId)) {
                         sauce.dislikes--;
                         sauce.usersDisliked = sauce.usersDisliked.filter(item => item != bodyObj.userId);
@@ -108,18 +117,22 @@ exports.likeSauces = (req, res) => {
                     sauce.save()
                     break;
                 case -1:
-                    sauce.dislikes++;
-                    if (sauce.usersLiked.includes(bodyObj.userId)) {
-                        sauce.usersLiked = sauce.usersLiked.filter(item => item != bodyObj.userId);
-                    }
+                    // Si le tableau [usersDisliked] ne contient pas userId alors 
+                    // incrémente dislikes de 1 et ajoute userId dans [usersDisliked]
                     if (!sauce.usersDisliked.includes(bodyObj.userId)) {
+                        sauce.dislikes++;
                         sauce.usersDisliked.push(bodyObj.userId);
+                    }
+                    // Si le tableau [usersLiked] contient userId alors 
+                    // décrémente likes de 1 et enlève userId dans [usersLiked]
+                    if (sauce.usersLiked.includes(bodyObj.userId)) {
+                        sauce.likes--;
+                        sauce.usersLiked = sauce.usersLiked.filter(item => item != bodyObj.userId);
                     }
                     sauce.save();
                     break;
-
                 default:
-                    res.status(400).json({ error: 'Valeur de like incorrect, doit etre -1, 0 ou 1 !' })
+                    // Ne rien faire si like != -1 | 0 | 1
                     break;
             }
         })

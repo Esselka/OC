@@ -2,7 +2,7 @@
     "name": "api",
     "version": "1.0.0",
     "description": "",
-    "main": "-r dotenv/config server.js",
+    "main": "node -r dotenv/config server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "nodemon -r dotenv/config server"
