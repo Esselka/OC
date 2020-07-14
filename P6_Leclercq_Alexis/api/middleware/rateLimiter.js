@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { RateLimiterMongo } = require('rate-limiter-flexible');
 const mongoose = require('mongoose');
 
